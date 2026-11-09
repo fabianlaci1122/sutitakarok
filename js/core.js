@@ -112,46 +112,27 @@
   ];
   const ICON = {
     bag: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1.2 11.2a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8L6 8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>',
-    prev: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>',
-    next: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>',
   };
-  const pad2 = (n) => String(n).padStart(2, "0");
 
+  /* Két külön szakasz: felül a logó és a név (görgetéskor eltűnik),
+     alatta a menüsáv csak kattintható oldalfülekkel és a kosárral (görgetéskor is fent marad). */
   function headerHTML(page) {
-    const i = Math.max(0, SA.PAGES.findIndex((p) => p.id === page));
-    const prev = SA.PAGES[(i - 1 + SA.PAGES.length) % SA.PAGES.length];
-    const next = SA.PAGES[(i + 1) % SA.PAGES.length];
     return `
-    <header class="hdr" id="hdr">
-      <div class="hdr__bar">
-        <a class="hdr__brand" href="index.html" aria-label="Sütit akarok! – kezdőlap">
-          <img src="img/logo-240.png" alt="" width="40" height="40">
-          <span>Sütit akarok!</span>
-        </a>
-        <nav class="tabs" id="tabs" aria-label="Oldalak">
-          ${SA.PAGES.map((p, k) => `<a href="${p.href}"${p.id === page ? ' aria-current="page"' : ""}><i>${pad2(k + 1)}</i>${p.label}</a>`).join("")}
+    <header class="brandbar">
+      <a class="brandbar__link" href="index.html" aria-label="Sütit akarok! – kezdőlap">
+        <img src="img/logo-240.png" alt="" width="64" height="64">
+        <span class="brandbar__name">Sütit akarok!</span>
+        <span class="brandbar__sub">Kézműves cukrászda · Budapest II.</span>
+      </a>
+    </header>
+    <div class="navbar" id="hdr">
+      <div class="navbar__in">
+        <nav class="tabs" aria-label="Oldalak">
+          ${SA.PAGES.map((p) => `<a href="${p.href}"${p.id === page ? ' aria-current="page"' : ""}>${p.label}</a>`).join("")}
         </nav>
-        <div class="hdr__tools">
-          <div class="stepper" aria-label="Lapozás az oldalak között">
-            <a class="stepper__btn" href="${prev.href}" aria-label="Előző oldal: ${prev.label}" title="Előző: ${prev.label}">${ICON.prev}</a>
-            <span class="stepper__pos" aria-hidden="true">${pad2(i + 1)}<b>/</b>${pad2(SA.PAGES.length)}</span>
-            <a class="stepper__btn" href="${next.href}" aria-label="Következő oldal: ${next.label}" title="Következő: ${next.label}">${ICON.next}</a>
-          </div>
-          <button class="cartbtn" type="button" id="cartbtn" data-open-cart aria-haspopup="dialog" aria-label="Kosár megnyitása, 0 termék">${ICON.bag}<span class="cartbtn__label">Kosár</span><span class="cartbtn__count" data-cart-count hidden>0</span></button>
-        </div>
+        <button class="cartbtn" type="button" id="cartbtn" data-open-cart aria-haspopup="dialog" aria-label="Kosár megnyitása, 0 termék">${ICON.bag}<span class="cartbtn__label">Kosár</span><span class="cartbtn__count" data-cart-count hidden>0</span></button>
       </div>
-    </header>`;
-  }
-
-  function pagerHTML(page) {
-    const i = SA.PAGES.findIndex((p) => p.id === page);
-    if (i < 0) return "";
-    const prev = SA.PAGES[i - 1], next = SA.PAGES[i + 1];
-    return `
-    <nav class="pager wrap" aria-label="Lapozás">
-      ${prev ? `<a class="pager__link" href="${prev.href}"><small>${ICON.prev}Előző oldal</small><b>${prev.label}</b></a>` : "<span></span>"}
-      ${next ? `<a class="pager__link pager__link--next" href="${next.href}"><small>Következő oldal${ICON.next}</small><b>${next.label}</b></a>` : `<a class="pager__link pager__link--next" href="${SA.PAGES[0].href}"><small>Vissza az elejére${ICON.next}</small><b>${SA.PAGES[0].label}</b></a>`}
-    </nav>`;
+    </div>`;
   }
 
   function footerHTML() {
@@ -241,15 +222,9 @@
   function setupHeader() {
     const hdr = $("#hdr");
     if (!hdr) return;
-    const onScroll = () => hdr.classList.toggle("is-scrolled", window.scrollY > 8);
+    const onScroll = () => hdr.classList.toggle("is-scrolled", hdr.getBoundingClientRect().top <= 12);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    // mobilon az aktív fül legyen látható a vízszintesen görgethető sávban
-    const cur = hdr.querySelector('.tabs a[aria-current="page"]');
-    if (cur) {
-      const tabs = hdr.querySelector(".tabs");
-      tabs.scrollLeft = cur.offsetLeft - (tabs.clientWidth - cur.clientWidth) / 2;
-    }
   }
 
   // ======================= BEÚSZÁS =======================
@@ -280,7 +255,7 @@
     const page = document.body.dataset.page || "";
     const hs = $("#site-header"), fs = $("#site-footer");
     if (hs) hs.outerHTML = headerHTML(page);
-    if (fs) fs.outerHTML = pagerHTML(page) + footerHTML();
+    if (fs) fs.outerHTML = footerHTML();
     document.querySelectorAll("[data-open-now]").forEach((el) => { const s = SA.openState(); el.textContent = s.text; el.classList.toggle("is-open", s.open); });
     setupHeader();
     renderBadge();

@@ -27,7 +27,7 @@ Utána nyisd meg a böngészőben: http://localhost:8140
 | `kosar.html` | Csak átirányítás a régi linkekhez: a főoldalra visz, ahol a kosár ablaka magától megnyílik (`index.html#kosar`) |
 | `styles.css` | Közös stílusok. A színek (a logóból) és a betűk a `:root` változókban vannak |
 | `js/data.js` | **Termékek, árak, beállítások** (`SA.CONFIG`, `SA.CATS`, `SA.PRODUCTS`). Itt kell módosítani a kínálatot |
-| `js/core.js` | Minden oldalra: kosár (localStorage), fejléc az oldalfülekkel és a lapozóval, lapozó kártyák az oldal alján, lábléc, termékkártya, toast, beúszó animációk, küldés (CRM-webhook vagy mailto) |
+| `js/core.js` | Minden oldalra: kosár (localStorage), fejléc (logó és név, alatta menüsáv), lábléc, termékkártya, toast, beúszó animációk, küldés (CRM-webhook vagy mailto) |
 | `js/cartwin.js` | **A kosár külön ablakban** (natív `<dialog>`): 1. Kosár → 2. Adatok → 3. Kész. Minden oldalon elérhető |
 | `js/home.js`, `js/shop.js`, `js/product.js`, `js/pages.js` | Oldalankénti szkriptek |
 | `img/termek/` | Négyzetes termékfotók |
@@ -35,7 +35,7 @@ Utána nyisd meg a böngészőben: http://localhost:8140
 | `KUTATAS.md` | Háttérkutatás a partnerről, valamint a fotók forrásai |
 | `v1-gozgomboc-ora/` | Korábbi dizájnváltozat, archívumként megtartva |
 
-**Navigáció:** a fejléc és a lábléc egy helyen, a `js/core.js` fájlban van megírva, és minden oldalra innen kerül be (`<div id="site-header">` és `<div id="site-footer">`). Az oldalak sorrendje, vagyis a fülek, a ‹ › lapozó és az „Előző/Következő oldal” kártyák mind az `SA.PAGES` tömbből jönnek. Új oldalnál elég oda felvenni.
+**Navigáció:** a fejléc és a lábléc egy helyen, a `js/core.js` fájlban van megírva, és minden oldalra innen kerül be (`<div id="site-header">` és `<div id="site-footer">`). A fejléc két külön szakasz: felül a logó és a név, alatta egy ragadós menüsáv, benne a csak kattintható oldalfülekkel és a kosár gombjával. Telefonon a fülek két sorba törnek, nem kell oldalra görgetni. A fülek az `SA.PAGES` tömbből jönnek, új oldalnál elég oda felvenni.
 
 **Betűk (Google Fonts):** Unbounded (címek), Geist (szöveg), Geist Mono (címkék, árak, adatok), Courgette (a logó felirata és a kiemelt szavak). Mindegyikben van ő és ű.
 
