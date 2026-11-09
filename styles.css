@@ -108,15 +108,17 @@ button, input, select, textarea { font: inherit; }
 .iconbtn svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
 /* ---------- Infósáv a legtetején ---------- */
-.topbar { background: var(--ink); color: rgb(255 255 255 / .72); font: 400 12px/1 var(--f-mono); letter-spacing: .02em; }
-.topbar__in { width: min(100% - 56px, var(--wrap)); margin-inline: auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 10px 0; }
-.topbar p { margin: 0; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
-.topbar__open { color: var(--white); }
-.topbar__open .dot-live { margin-right: -10px; }
-.topbar__today { color: rgb(255 255 255 / .55); }
-.topbar a { color: rgb(255 255 255 / .72); text-decoration: none; transition: color .2s; }
-.topbar a:hover { color: var(--p1); }
-.topbar__more { text-decoration: underline !important; text-underline-offset: 3px; text-decoration-color: rgb(255 255 255 / .3) !important; }
+/* a cég színe (a logó rózsaszínjei) és a cég betűje (Courgette, a logó felirata);
+   sötét szöveg, mert a fehér ilyen kis méretben nem lenne jól olvasható a rózsaszínen */
+.topbar { background: linear-gradient(90deg, #f5a3bd 0%, #ee7ea0 55%, #e36692 100%); color: var(--ink); font: 400 15px/1.2 var(--f-script); }
+.topbar__in { width: min(100% - 56px, var(--wrap)); margin-inline: auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 9px 0; }
+.topbar p { margin: 0; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.topbar__open .dot-live { margin-right: -12px; background: rgb(17 16 19 / .45); }
+.topbar__open .dot-live.is-open { background: #10893f; box-shadow: 0 0 0 3px rgb(255 255 255 / .55); }
+.topbar__today { color: rgb(17 16 19 / .72); }
+.topbar a { color: var(--ink); text-decoration: none; transition: color .2s; }
+.topbar a:hover { color: var(--white); }
+.topbar__more { text-decoration: underline !important; text-underline-offset: 3px; text-decoration-color: rgb(17 16 19 / .35) !important; }
 
 /* ---------- Fejléc: logó és név a bal sarokban, a helyén marad ---------- */
 .hdr { border-bottom: 1px solid var(--line); }
@@ -592,7 +594,8 @@ a.duo__card h2, a.duo__card p { position: relative; z-index: 1; max-width: 70%; 
   body { font-size: 16px; }
   .wrap { width: min(100% - 32px, var(--wrap)); }
   /* infósáv: telefonon csak az állapot és a telefonszám */
-  .topbar__in { width: min(100% - 32px, var(--wrap)); padding: 9px 0; }
+  .topbar { font-size: 14px; }
+  .topbar__in { width: min(100% - 32px, var(--wrap)); padding: 8px 0; }
   .topbar__today, .topbar__more, .topbar__addr, .topbar__ig { display: none; }
   /* fejléc: felül logó + név és kosár, alatta a menü (két sorba törhet, nem kell oldalra görgetni) */
   .hdr__in { width: min(100% - 32px, var(--wrap)); flex-wrap: wrap; gap: 10px 12px; padding: 12px 0 8px; }
