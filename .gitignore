@@ -1,0 +1,7 @@
+# Nyers, letöltött forrásképek (az oldal az img/foto/ alatti vágott változatokat használja)
+img/forras/
+
+# Rendszerfájlok
+Thumbs.db
+desktop.ini
+.DS_Store

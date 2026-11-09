@@ -1,0 +1,238 @@
+﻿<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sütit akarok! – cukrászda és fagyizó a Frankel Leó úton</title>
+  <meta name="description" content="Sajttorták, mentes sütik, brownietorták, gőzgombóc minden nap és Budapest legjobb flódnija. Cukrászda, fagyizó és tortarendelés Budapest II. kerületében, a Frankel Leó út 72. alatt.">
+  <link rel="icon" href="../img/logo-240.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Caveat:wght@600&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#tartalom">Ugrás a tartalomra</a>
+
+  <header class="top">
+    <div class="wrap top__in">
+      <a class="brand" href="#" aria-label="Sütit akarok! – kezdőlap">
+        <img src="../img/logo-240.png" alt="" width="44" height="44">
+        <span>Sütit akarok!</span>
+      </a>
+      <nav class="nav" aria-label="Fő menü">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="menu">Menü</button>
+        <ul id="menu">
+          <li><a href="#heten">A héten</a></li>
+          <li><a href="#pult">Pult</a></li>
+          <li><a href="#fagyi">Fagyi</a></li>
+          <li><a href="#rendeles">Tortarendelés</a></li>
+          <li><a href="#rolunk">Rólunk</a></li>
+          <li><a href="#info">Elérhetőség</a></li>
+        </ul>
+      </nav>
+      <p class="status" id="status" aria-live="polite"><span class="status__dot"></span><span class="status__txt">Nyitvatartás…</span></p>
+    </div>
+  </header>
+
+  <main id="tartalom">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero__in">
+        <div class="hero__copy">
+          <p class="eyebrow">Cukrászda és fagyizó · Budapest II., Frankel Leó út 72.</p>
+          <h1 class="hero__title"><span>Sütit</span> <span>akarok<em>!</em></span></h1>
+          <p class="hero__lead">Sajttorták, mentes sütik, brownietorták és Budapest legjobb flódnija. Mindent itt sütünk a pult mögött, saját receptből, igazi vajjal, csokoládéval és tejszínnel.</p>
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="#rendeles">Tortát rendelek</a>
+            <a class="btn btn--ghost" href="#heten">Mi van ma a pultban?</a>
+          </div>
+        </div>
+
+        <!-- Signature: gőzgombóc óra -->
+        <aside class="poster" aria-labelledby="gg-title">
+          <h2 id="gg-title" class="poster__title">Gőzgombóc</h2>
+          <p class="poster__sub">minden nap</p>
+          <div class="clock" aria-hidden="true">
+            <svg viewBox="0 0 240 240" id="clock-svg">
+              <circle class="clock__plate" cx="120" cy="120" r="112"/>
+              <circle class="clock__rim" cx="120" cy="120" r="112"/>
+              <g id="clock-ticks"></g>
+              <path id="clock-arc" class="clock__arc" d=""/>
+              <ellipse class="clock__sodo" cx="120" cy="132" rx="78" ry="60"/>
+              <g class="clock__steam">
+                <path d="M100 58 q-8 -12 0 -24 q8 -12 0 -24"/>
+                <path d="M120 52 q-8 -12 0 -24 q8 -12 0 -24"/>
+                <path d="M140 58 q-8 -12 0 -24 q8 -12 0 -24"/>
+              </g>
+              <path class="clock__gomboc" d="M70 132 C70 80, 170 80, 170 132 C170 146, 70 146, 70 132 Z"/>
+              <g id="clock-mak"></g>
+              <line id="clock-hour" class="clock__hand clock__hand--h" x1="120" y1="120" x2="120" y2="72"/>
+              <line id="clock-min" class="clock__hand" x1="120" y1="120" x2="120" y2="40"/>
+              <circle class="clock__pin" cx="120" cy="120" r="5"/>
+            </svg>
+          </div>
+          <p class="poster__ready" id="gg-ready">Kb. 25 perc, amíg elkészül.</p>
+          <p class="poster__note">Klasszikus: szilvalekvár, vaníliasodó, mákszórás. Hétvégén nutellás és pisztáciás is.</p>
+          <a class="btn btn--dark" href="tel:+36309792948">Előrendelem: 06 30 979 2948</a>
+        </aside>
+      </div>
+    </section>
+
+    <!-- A HÉTEN -->
+    <section class="section" id="heten" aria-labelledby="heten-title">
+      <div class="wrap">
+        <header class="section__head">
+          <p class="eyebrow">Naponta változik</p>
+          <h2 id="heten-title">Ezen a héten a pultban</h2>
+          <p class="section__lead">A sütik kínálata minden nap más, a gőzgombóc viszont mindig van. Hétvégére extra ízekkel és témanapokkal készülünk, ezeket az Instagramon is bejelentjük.</p>
+        </header>
+        <ol class="week" id="week" aria-label="A hét napjai"></ol>
+        <div class="news" id="news"></div>
+      </div>
+    </section>
+
+    <!-- PULT -->
+    <section class="section section--pink" id="pult" aria-labelledby="pult-title">
+      <div class="wrap">
+        <header class="section__head">
+          <p class="eyebrow">Amiért visszajönnek</p>
+          <h2 id="pult-title">A pultunk</h2>
+          <p class="section__lead">Házias kinézetű, de igényes sütik. Szeletre, egész tortában vagy előrendelve is kérhetők. Sütik 1390 Ft-tól.</p>
+        </header>
+        <div class="tiles" id="tiles"></div>
+      </div>
+    </section>
+
+    <!-- FAGYI -->
+    <section class="section" id="fagyi" aria-labelledby="fagyi-title">
+      <div class="wrap fagyi">
+        <div>
+          <p class="eyebrow">2024 nyara óta</p>
+          <h2 id="fagyi-title">Fagyi, ami sütiből lett</h2>
+          <p class="section__lead">Több mint egy tucat ízünk van, természetes alapanyagokból, festék nélkül. Sűrűbb és tompább színű, mint a bolti fagyi, mert az íze gyümölcsből, mákból és pisztáciából jön, nem cukorból. Van vegán, gluténmentes és mindenmentes jégkrém is, és affogato a kávé mellé.</p>
+          <dl class="price">
+            <div><dt>Gombóc (5 dkg)</dt><dd>550 Ft</dd></div>
+            <div><dt>Prémium íz</dt><dd>700 Ft</dd></div>
+          </dl>
+          <!-- TODO: aktuális fagyiárak a partnertől (a fenti árak a 2024-es We Love Budapest cikkből vannak) -->
+        </div>
+        <ul class="scoops" id="scoops" aria-label="Fagyiízek"></ul>
+      </div>
+    </section>
+
+    <!-- RENDELÉS -->
+    <section class="section section--sodo" id="rendeles" aria-labelledby="rendeles-title">
+      <div class="wrap order">
+        <div class="order__intro">
+          <p class="eyebrow">Tortarendelés</p>
+          <h2 id="rendeles-title">Mondd el, mire kell, és megsütjük</h2>
+          <p class="section__lead">Burkolt torták, sajttorták, brownietorták, desszertasztal esküvőre és céges karácsonyra. Írd meg, mikorra, hány főre és milyen ízekben gondolkodsz, és visszajelzünk az árral és a részletekkel.</p>
+          <ul class="checks">
+            <li>Mentes változatban is kérheted (gluténmentes, laktózmentes, vegán)</li>
+            <li>Felirattal, egyedi díszítéssel</li>
+            <li>Átvétel a boltban, a Frankel Leó úton</li>
+          </ul>
+          <p class="small">Sürgős? Hívj minket: <a href="tel:+36309792948">06 30 979 2948</a></p>
+        </div>
+
+        <form class="form" id="order-form" novalidate>
+          <fieldset class="kind">
+            <legend>Mit szeretnél?</legend>
+            <label><input type="radio" name="tipus" value="Torta" checked><span>Torta</span></label>
+            <label><input type="radio" name="tipus" value="Desszertasztal"><span>Desszertasztal</span></label>
+            <label><input type="radio" name="tipus" value="Esküvői torta"><span>Esküvői torta</span></label>
+            <label><input type="radio" name="tipus" value="Céges karácsony"><span>Céges karácsony</span></label>
+          </fieldset>
+
+          <div class="row">
+            <label class="field"><span>Név</span><input name="nev" autocomplete="name" required></label>
+            <label class="field"><span>Telefonszám</span><input name="telefon" type="tel" autocomplete="tel" required></label>
+          </div>
+          <div class="row">
+            <label class="field"><span>E-mail</span><input name="email" type="email" autocomplete="email"></label>
+            <label class="field"><span>Mikorra kell?</span><input name="datum" type="date" id="f-date" required></label>
+          </div>
+          <div class="row">
+            <label class="field"><span id="f-qty-label">Hány szelet?</span>
+              <select name="mennyiseg" id="f-qty"></select>
+            </label>
+            <label class="field"><span>Mentesség</span>
+              <select name="mentes">
+                <option>Nem kell</option>
+                <option>Gluténmentes</option>
+                <option>Laktózmentes</option>
+                <option>Vegán</option>
+                <option>Cukormentes</option>
+                <option>Több is (megírom lent)</option>
+              </select>
+            </label>
+          </div>
+          <label class="field"><span>Ízek, felirat, ötletek</span><textarea name="uzenet" rows="4" placeholder="Pl. pisztáciás-málnás, „Boldog szülinapot, Anna!” felirattal"></textarea></label>
+          <p class="form__err" id="form-err" role="alert"></p>
+          <button class="btn btn--primary btn--wide" type="submit">Ajánlatot kérek</button>
+          <p class="small">A gomb megnyitja az e-mail-programodat a kitöltött levéllel, amit a sutitakarok.abolt@gmail.com címre küldhetsz el.</p>
+          <!-- TODO: ha lesz backend/űrlapszolgáltatás, mailto helyett oda küldjük; rendelési határidőt (most 3 nap) egyeztetni -->
+        </form>
+      </div>
+    </section>
+
+    <!-- RÓLUNK -->
+    <section class="section" id="rolunk" aria-labelledby="rolunk-title">
+      <div class="wrap about">
+        <div class="about__copy">
+          <p class="eyebrow">Gerti és Ati</p>
+          <h2 id="rolunk-title">A táncparkettről a sütőhöz</h2>
+          <p>Kapusi Gerti közgazdász, Menyhért Attila könyvelő. Mindketten táncot tanítottak, ott is ismerkedtek meg. Gerti azért kezdett sütis blogot írni, mert a barátai folyton receptet kértek tőle. A blog miatt minden héten új sütit kellett kitalálnia, így lassan összegyűlt az a receptgyűjtemény, amiből ma a pult is áll.</p>
+          <p>Két háztartási sütővel és egy ötliteres keverőgéppel kezdték, kávézóknak sütöttek. Ma egy tizenkét fős csapattal sütnek a Frankel Leó úton. Gerti kedvencei továbbra is a nagyis sütik.</p>
+          <!-- TODO: saját szöveg és fotó Gertitől és Atitól; nyitás pontos éve -->
+        </div>
+        <ol class="timeline" aria-label="A Sütit akarok! története">
+          <li><b>2004</b><span>Ati megalapítja a saját tánciskoláját.</span></li>
+          <li><b>2013</b><span>Elindul Gerti blogja, a Sütit akarok!</span></li>
+          <li><b>Kb. 2015</b><span>Saját cukrászda a Frankel Leó út 72. alatt.</span></li>
+          <li><b>2024 nyara</b><span>Saját fagyi, több mint egy tucat ízzel.</span></li>
+          <li><b>Ma</b><span>12 fős csapat, gőzgombóc minden nap.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- INFO -->
+    <section class="section section--mak" id="info" aria-labelledby="info-title">
+      <div class="wrap info">
+        <div>
+          <p class="eyebrow">Gyere be</p>
+          <h2 id="info-title">Frankel Leó út 72.</h2>
+          <p class="info__addr">1023 Budapest, II. kerület, a Margit híd budai hídfőjétől pár perc sétára.</p>
+          <table class="hours" id="hours" aria-label="Nyitvatartás"></table>
+          <!-- TODO: nyitvatartás egyeztetése (Google: H–P 8–19, Szo–V 9–19; régi katalógusoldalakon eltérő adat szerepel) -->
+          <ul class="chips">
+            <li>Kutyabarát</li><li>Terasz</li><li>Akadálymentes</li><li>Kártyás fizetés</li><li>Reggeli egész nap</li>
+          </ul>
+          <ul class="contact">
+            <li><span>Telefon</span><a href="tel:+36309792948">06 30 979 2948</a></li>
+            <li><span>E-mail</span><a href="mailto:sutitakarok.abolt@gmail.com">sutitakarok.abolt@gmail.com</a></li>
+            <li><span>Instagram</span><a href="https://www.instagram.com/sutitakarok/" target="_blank" rel="noopener">@sutitakarok</a></li>
+            <li><span>Facebook</span><a href="https://www.facebook.com/sutitakarokblog/" target="_blank" rel="noopener">Sütit akarok!</a></li>
+          </ul>
+        </div>
+        <div class="map">
+          <iframe title="Térkép: Sütit akarok!, 1023 Budapest, Frankel Leó út 72." loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=S%C3%BCtit%20akarok%2C%20Frankel%20Le%C3%B3%20%C3%BAt%2072%2C%20Budapest&z=16&output=embed"></iframe>
+          <p class="small">Parkolni fizetős utcai helyen lehet, de villamossal könnyebb: a 4-es és 6-os a Margit híd budai hídfőjénél áll meg, a 17-es a Frankel Leó úton jár.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot__in">
+      <p class="foot__big">Sütit akarok<em>!</em></p>
+      <p>© <span id="year"></span> Sütit akarok! · 1023 Budapest, Frankel Leó út 72. · <a href="https://www.instagram.com/sutitakarok/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/sutitakarokblog/" target="_blank" rel="noopener">Facebook</a></p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
+

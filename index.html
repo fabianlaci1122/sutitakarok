@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sütit akarok! – cukrászda és fagyizó a Frankel Leó úton</title>
+  <meta name="description" content="Sajttorták, mentes sütik, brownietorták, gőzgombóc minden nap és Budapest legjobb flódnija. Cukrászda, fagyizó és tortarendelés Budapest II. kerületében, a Frankel Leó út 72. alatt.">
+  <link rel="icon" href="img/logo-240.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- A referencia betűi: PB Signature Bold Display (zárt, ő/ű nélkül) → Syncopate Bold; Special Elite; Roboto 300 -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Special+Elite&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+  <a class="skip" href="#tartalom">Ugrás a tartalomra</a>
+
+  <!-- FEJLÉC: átlátszó a hero fölött, görgetéskor rózsaszín -->
+  <header class="hdr" id="hdr">
+    <div class="hdr__in">
+      <a class="hdr__brand" href="#" aria-label="Sütit akarok! – kezdőlap">
+        <img src="img/logo-240.png" alt="" width="46" height="46">
+        <span>Sütit akarok!</span>
+      </a>
+      <nav class="hdr__nav" id="nav" aria-label="Fő menü">
+        <ul>
+          <li><a href="#kinalat">Kínálat</a></li>
+          <li><a href="#advent">Advent</a></li>
+          <li><a href="#alkalmak">Torták</a></li>
+          <li><a href="#rolunk">Rólunk</a></li>
+          <li><a href="#info">Elérhetőség</a></li>
+        </ul>
+      </nav>
+      <div class="hdr__cta">
+        <a class="btn btn--hdr" href="tel:+36309792948">Előrendelés</a>
+        <a class="btn btn--hdr" href="#rendeles">Tortarendelés</a>
+      </div>
+      <button class="hdr__burger" aria-expanded="false" aria-controls="nav" aria-label="Menü megnyitása">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="tartalom">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <img class="hero__img" src="img/foto/hero-sutik.jpg" alt="">
+      <div class="hero__copy">
+        <h1 id="hero-title">Sütit akarok!</h1>
+        <a class="btn btn--rose btn--xl" href="#kinalat">Nézd meg a kínálatot</a>
+      </div>
+    </section>
+
+    <!-- KIEMELT -->
+    <section class="sec" id="kinalat" aria-labelledby="kiemelt-title">
+      <div class="wrap">
+        <h2 id="kiemelt-title" class="title reveal">Kiemelt finomságok</h2>
+        <div class="cards">
+          <article class="card reveal">
+            <img src="img/ig/gozgomboc-makos.jpg" alt="Mákos gőzgombóc vaníliasodóban" loading="lazy">
+            <div class="card__body">
+              <h3>Gőzgombóc minden nap</h3>
+              <p>Szilvalekváros, vaníliasodóval és mákkal. Hétvégén nutellás és pisztáciás is. Kb. 25 percig készül, hívj előre.</p>
+            </div>
+            <div class="card__act">
+              <a href="tel:+36309792948"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg>Előrendelem</a>
+              <a href="#info"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8l4 4-4 4"/></svg>Nyitvatartás</a>
+            </div>
+          </article>
+          <article class="card reveal">
+            <img src="img/foto/sajttorta.jpg" alt="Csokoládés sajttorta szelet tányéron" loading="lazy">
+            <div class="card__body">
+              <h3>Házi sajttorták</h3>
+              <p>Klasszikus, gesztenyés, gyümölcsös és szezonális ízekben. Szeletre a pultból, vagy egész tortában rendelésre.</p>
+            </div>
+            <div class="card__act">
+              <a href="#rendeles" data-kind="Torta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 13H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>Rendelés</a>
+              <a href="#alkalmak"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8l4 4-4 4"/></svg>Torták</a>
+            </div>
+          </article>
+          <article class="card reveal">
+            <img src="img/foto/fagyi-pisztacia.jpg" alt="Két pisztáciás fagyi pisztáciával bevont tölcsérben" loading="lazy">
+            <div class="card__body">
+              <h3>Saját fagyi</h3>
+              <p>Több mint egy tucat íz természetes alapanyagokból, festék nélkül. A pisztáciás tölcsér a kedvencünk. Van vegán és mindenmentes is.</p>
+            </div>
+            <div class="card__act">
+              <a href="#info"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Útvonal</a>
+              <a href="#info"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8l4 4-4 4"/></svg>Nyitvatartás</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADVENT SÁV (a referencia „Rewards” sávjának mintájára) -->
+    <section class="band" id="advent" aria-labelledby="advent-title">
+      <div class="wrap band__in">
+        <div class="band__copy reveal">
+          <div class="band__head">
+            <img src="img/logo-240.png" alt="" width="64" height="64">
+            <h2 id="advent-title">Advent</h2>
+          </div>
+          <p class="band__sub">24 nap, 24 meglepetés</p>
+          <span class="band__bar" aria-hidden="true"></span>
+          <p>Adventi naptárunkban minden decemberi napra jut egy meglepicsomag, a végére pedig még 2 cukiság. Ajándéknak is jó annak, aki nagyon sütit akar.</p>
+          <a class="btn btn--pink btn--lg" href="#rendeles" data-kind="Adventi naptár">Előrendelem</a>
+          <p class="band__fine">*11 990 Ft-tól, átvétel a boltban</p>
+          <!-- TODO: rendelési határidő és pontos árak a partnertől -->
+        </div>
+        <div class="cal reveal" aria-hidden="true">
+          <div class="cal__top">Sütit akarok!</div>
+          <div class="cal__grid" id="cal-grid"></div>
+          <div class="cal__foot">Adventi naptár</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KATEGÓRIÁK (fotó + 3 sor, a referencia „Bakery / Cakes / Catering” blokkja szerint) -->
+    <section class="sec" id="alkalmak" aria-label="Kategóriák">
+      <div class="wrap browse">
+        <img class="browse__img reveal" src="img/foto/fagyipult.jpg" alt="A Sütit akarok! fagyispultja színes fagyikkal" loading="lazy">
+        <div class="browse__list">
+          <article class="row reveal">
+            <svg class="row__ico" viewBox="0 0 64 64" aria-hidden="true"><path d="M6 44 L52 30 L58 34 L58 50 L6 50 Z"/><path d="M6 44 L58 34"/><path d="M6 47 H58"/><circle cx="50" cy="24" r="4"/></svg>
+            <div>
+              <h3>Sütik</h3>
+              <p>Naponta változó pult sajttortákkal, brownie-kkal, mentes és nagyis sütikkel. És Budapest legjobb flódnijával.</p>
+              <div class="row__btns">
+                <a class="btn btn--pink btn--sm" href="tel:+36309792948">Előrendelés</a>
+                <a class="btn btn--cream btn--sm" href="#info">Nyitvatartás</a>
+              </div>
+            </div>
+          </article>
+          <article class="row reveal">
+            <svg class="row__ico" viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="30" width="36" height="16" rx="2"/><rect x="20" y="18" width="24" height="12" rx="2"/><path d="M32 8 v10"/><path d="M8 46 H56"/><path d="M26 46 L22 56 M38 46 L42 56 M20 56 H44"/></svg>
+            <div>
+              <h3>Torták</h3>
+              <p>Burkolt torták felirattal, esküvői torták és mentes változatok, a te ízlésed szerint megsütve.</p>
+              <div class="row__btns">
+                <a class="btn btn--pink btn--sm" href="#rendeles" data-kind="Torta">Tortát rendelek</a>
+                <a class="btn btn--cream btn--sm" href="#rendeles" data-kind="Esküvői torta">Esküvői torta</a>
+              </div>
+            </div>
+          </article>
+          <article class="row reveal">
+            <svg class="row__ico" viewBox="0 0 64 64" aria-hidden="true"><path d="M10 28 H54 V54 H10 Z"/><path d="M6 20 H58 V28 H6 Z"/><path d="M32 20 V54"/><path d="M32 20 c-4-10-16-10-12 0 M32 20 c4-10 16-10 12 0"/></svg>
+            <div>
+              <h3>Rendezvények</h3>
+              <p>Desszertasztal esküvőre, születésnapra és céges karácsonyra. Mondd meg a létszámot, mi összerakjuk.</p>
+              <div class="row__btns">
+                <a class="btn btn--pink btn--sm" href="#rendeles" data-kind="Desszertasztal">Ajánlatot kérek</a>
+                <a class="btn btn--cream btn--sm" href="tel:+36309792948">Hívj minket</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ÜDVÖZLŐ -->
+    <section class="sec sec--paper" id="rolunk" aria-labelledby="rolunk-title">
+      <div class="wrap center reveal">
+        <h2 id="rolunk-title" class="title title--xl">Üdv a környék<br>cukrászdájában!</h2>
+        <p class="sub">Egy sütis blogból nőttünk ki</p>
+        <p class="lead">Gerti és Ati táncot tanítottak, amikor Gerti blogolni kezdett a sütijeiről, mert a barátai folyton receptet kértek tőle. Ma egy tizenkét fős csapattal sütnek a Frankel Leó úton, mindent itt, a pult mögött, igazi vajjal, csokoládéval és tejszínnel.</p>
+      </div>
+      <div class="wrap reveal">
+        <img class="welcome__img" src="img/foto/gerti-ati-bolt.jpg" alt="Gerti és Ati a Sütit akarok! pultja előtt" loading="lazy">
+      </div>
+    </section>
+
+    <!-- TORTARENDELÉS -->
+    <section class="sec" id="rendeles" aria-labelledby="rendeles-title">
+      <div class="wrap wrap--form">
+        <div class="center reveal">
+          <h2 id="rendeles-title" class="title">Tortarendelés</h2>
+          <p class="lead">Írd meg, mire, mikorra és hány főre kell, és visszajelzünk az árral és a részletekkel.</p>
+        </div>
+        <form class="form reveal" id="order-form" novalidate>
+          <fieldset class="kind">
+            <legend class="sr">Mit szeretnél rendelni?</legend>
+            <label><input type="radio" name="tipus" value="Torta" checked><span>Torta</span></label>
+            <label><input type="radio" name="tipus" value="Esküvői torta"><span>Esküvői torta</span></label>
+            <label><input type="radio" name="tipus" value="Desszertasztal"><span>Desszertasztal</span></label>
+            <label><input type="radio" name="tipus" value="Adventi naptár"><span>Adventi naptár</span></label>
+          </fieldset>
+          <div class="grid2">
+            <label class="field"><span>Név</span><input name="nev" autocomplete="name" required></label>
+            <label class="field"><span>Telefonszám</span><input name="telefon" type="tel" autocomplete="tel" required></label>
+            <label class="field"><span>E-mail</span><input name="email" type="email" autocomplete="email"></label>
+            <label class="field"><span>Mikorra kell?</span><input name="datum" type="date" id="f-date" required></label>
+            <label class="field"><span id="f-qty-label">Mennyiség</span><select name="mennyiseg" id="f-qty"></select></label>
+            <label class="field"><span>Mentesség</span>
+              <select name="mentes"><option>Nem kell</option><option>Gluténmentes</option><option>Laktózmentes</option><option>Vegán</option><option>Cukormentes</option></select>
+            </label>
+          </div>
+          <label class="field"><span>Ízek, felirat, ötletek</span><textarea name="uzenet" rows="3" placeholder="Pl. pisztáciás-málnás, „Boldog szülinapot, Anna!” felirattal"></textarea></label>
+          <p class="form__err" id="form-err" role="alert"></p>
+          <div class="center">
+            <button class="btn btn--rose btn--lg" type="submit">Ajánlatot kérek</button>
+            <p class="fine">A gomb megnyitja az e-mail-programodat a kitöltött levéllel. Sürgős? Hívj: <a href="tel:+36309792948">06 30 979 2948</a></p>
+          </div>
+          <!-- TODO: backend/űrlapszolgáltatás; rendelési határidő (most 3 nap) egyeztetése -->
+        </form>
+      </div>
+    </section>
+
+    <!-- ELÉRHETŐSÉG -->
+    <section class="sec sec--paper" id="info" aria-labelledby="info-title">
+      <div class="wrap info">
+        <div class="reveal">
+          <h2 id="info-title" class="title title--left">Gyere be hozzánk</h2>
+          <p class="sub sub--left" id="open-now">Frankel Leó út 72.</p>
+          <p>1023 Budapest, II. kerület. A Margit híd budai hídfőjétől pár perc sétára, a Frankel Leó úton a 17-es villamos is jár.</p>
+          <table class="hours" id="hours" aria-label="Nyitvatartás"></table>
+          <!-- TODO: nyitvatartás egyeztetése a partnerrel -->
+          <p class="tags">Kutyabarát · Terasz · Akadálymentes · Kártyás fizetés · Reggeli egész nap</p>
+          <div class="info__btns">
+            <a class="btn btn--rose" href="tel:+36309792948">06 30 979 2948</a>
+            <a class="btn btn--cream" href="mailto:sutitakarok.abolt@gmail.com">E-mail írása</a>
+          </div>
+        </div>
+        <div class="map reveal">
+          <iframe title="Térkép: Sütit akarok!, 1023 Budapest, Frankel Leó út 72." loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=Budapest%2C%20Frankel%20Le%C3%B3%20%C3%BAt%2072&z=16&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- LÁBLÉC -->
+  <footer class="ftr">
+    <div class="wrap ftr__in">
+      <a class="ftr__logo" href="#" aria-label="Vissza az oldal tetejére"><img src="img/logo-240.png" alt="" width="96" height="96"></a>
+      <div class="ftr__cols">
+        <ul class="ftr__main">
+          <li><a href="#kinalat">Kínálat</a></li>
+          <li><a href="#advent">Adventi naptár</a></li>
+          <li><a href="#rendeles">Tortarendelés</a></li>
+          <li><a href="#rolunk">Rólunk</a></li>
+          <li><a href="#info">Elérhetőség</a></li>
+        </ul>
+        <ul class="ftr__small">
+          <li><a href="#alkalmak">Esküvői torták</a></li>
+          <li><a href="#alkalmak">Desszertasztal</a></li>
+          <li><a href="#alkalmak">Céges karácsony</a></li>
+          <li><a href="tel:+36309792948">06 30 979 2948</a></li>
+          <li><a href="mailto:sutitakarok.abolt@gmail.com">sutitakarok.abolt@gmail.com</a></li>
+        </ul>
+      </div>
+      <div class="ftr__social">
+        <p>Kövess minket</p>
+        <a href="https://www.instagram.com/sutitakarok/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" class="dot"/></svg>
+        </a>
+        <a href="https://www.facebook.com/sutitakarokblog/" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v7h4v-7h3l1-4h-4V8z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="wrap ftr__legal">
+      <p>© <span id="year"></span> Sütit akarok! · 1023 Budapest, Frankel Leó út 72.</p>
+      <p>Fotók: We Love Budapest · Hámori Zsófia / WMN · Sütit akarok! Instagram</p>
+      <!-- TODO: a sajtófotók (We Love Budapest, WMN) használatához engedély kell, vagy cseréljük a bolt saját fotóira -->
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
