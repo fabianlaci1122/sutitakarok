@@ -251,59 +251,7 @@
   window.addEventListener("scroll", revealFallback, { passive: true });
   window.addEventListener("load", () => setTimeout(revealFallback, 300));
 
-  // ======================= GÖRGETÉSI EFFEKTEK =======================
-  /* Csipetnyi rózsaszín: haladásjelző csík legfelül, a logó pöttyeire emlékeztető
-     „cukorszórás” a lap szélein (görgetéskor lassabban mozog, mint a tartalom),
-     és a --sy / --scroll CSS-változók a finom parallaxhoz. Mozgáscsökkentésnél kikapcsol. */
-  function setupScrollFx() {
-    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const bar = document.createElement("div");
-    bar.className = "progress";
-    bar.setAttribute("aria-hidden", "true");
-    document.body.prepend(bar);
-
-    const layer = document.createElement("div");
-    layer.className = "sprinkles";
-    layer.setAttribute("aria-hidden", "true");
-    // determinisztikus „véletlen”, hogy minden oldalbetöltésnél ugyanúgy nézzen ki
-    let seed = 11;
-    const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
-    const colors = ["#f5a3bd", "#ee7ea0", "#e36692", "#fad0dd"];
-    const dots = [];
-    // a réteg a body teljes magasságát kitölti (CSS: inset 0), a pöttyök %-ban vannak elhelyezve,
-    // így szűréskor vagy átméretezéskor sem kell újraszámolni őket
-    const n = 30;
-    for (let i = 0; i < n; i++) {
-      const d = document.createElement("i");
-      const side = rnd();
-      // főleg a két szélen, hogy ne takarjon szöveget
-      const x = side < 0.42 ? rnd() * 6 + 0.5 : side < 0.84 ? 93 + rnd() * 6 : 12 + rnd() * 76;
-      const size = 4 + rnd() * 8;
-      const depth = 0.06 + rnd() * 0.26;
-      d.style.cssText = `left:${x.toFixed(2)}%;top:${(rnd() * 98).toFixed(2)}%;width:${size.toFixed(1)}px;height:${size.toFixed(1)}px;background:${colors[i % colors.length]};opacity:${side >= 0.84 ? 0.22 : (0.4 + rnd() * 0.4).toFixed(2)}`;
-      d.dataset.depth = depth.toFixed(3);
-      layer.appendChild(d);
-      dots.push(d);
-    }
-    document.body.appendChild(layer);
-
-    let ticking = false;
-    const update = () => {
-      ticking = false;
-      const y = window.scrollY;
-      const max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
-      const r = document.documentElement.style;
-      r.setProperty("--scroll", (y / max).toFixed(4));
-      r.setProperty("--sy", Math.round(y));
-      if (!reduce) for (const d of dots) d.style.transform = `translate3d(0, ${(y * d.dataset.depth).toFixed(1)}px, 0)`;
-    };
-    window.addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
-    window.addEventListener("resize", () => requestAnimationFrame(update));
-    update();
-  }
-
   document.addEventListener("DOMContentLoaded", () => {
-    setupScrollFx();
     const page = document.body.dataset.page || "";
     const hs = $("#site-header"), fs = $("#site-footer");
     if (hs) hs.outerHTML = headerHTML(page);
