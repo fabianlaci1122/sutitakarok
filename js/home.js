@@ -19,5 +19,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // nyitvatartás és élő állapot
   $("#hours").innerHTML = SA.hoursTable();
-  $("#hero-dot").classList.toggle("is-open", SA.openState().open);
 });

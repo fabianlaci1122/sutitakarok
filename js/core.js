@@ -114,25 +114,33 @@
     bag: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1.2 11.2a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8L6 8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>',
   };
 
-  /* Két külön szakasz: felül a logó és a név (görgetéskor eltűnik),
-     alatta a menüsáv csak kattintható oldalfülekkel és a kosárral (görgetéskor is fent marad). */
+  /* Legfelül vékony infósáv (nyitvatartás, cím, telefon), alatta egy egyszerű fejléc:
+     bal sarokban a logó és a név, mellette a menü és a kosár. A fejléc nem ragad fel, a helyén marad. */
   function headerHTML(page) {
+    const now = new Date(), [o, c] = C.HOURS[now.getDay()];
     return `
-    <header class="brandbar">
-      <a class="brandbar__link" href="index.html" aria-label="Sütit akarok! – kezdőlap">
-        <img src="img/logo-240.png" alt="" width="64" height="64">
-        <span class="brandbar__name">Sütit akarok!</span>
-        <span class="brandbar__sub">Kézműves cukrászda · Budapest II.</span>
-      </a>
-    </header>
-    <div class="navbar" id="hdr">
-      <div class="navbar__in">
+    <div class="topbar" role="region" aria-label="Nyitvatartás és elérhetőség">
+      <div class="topbar__in">
+        <p class="topbar__open"><i class="dot-live" data-open-dot></i><span data-open-now></span><span class="topbar__today">Ma ${o}:00–${c}:00</span><a class="topbar__more" href="kapcsolat.html">Nyitvatartás</a></p>
+        <p class="topbar__contact">
+          <a class="topbar__addr" href="${C.MAPS_URL}" target="_blank" rel="noopener">${C.ADDRESS}</a>
+          <a href="tel:${C.PHONE}">${C.PHONE_LABEL}</a>
+          <a class="topbar__ig" href="${C.INSTAGRAM}" target="_blank" rel="noopener">@sutitakarok</a>
+        </p>
+      </div>
+    </div>
+    <header class="hdr" id="hdr">
+      <div class="hdr__in">
+        <a class="hdr__brand" href="index.html" aria-label="Sütit akarok! – kezdőlap">
+          <img src="img/logo-240.png" alt="" width="48" height="48">
+          <span>Sütit akarok!</span>
+        </a>
         <nav class="tabs" aria-label="Oldalak">
           ${SA.PAGES.map((p) => `<a href="${p.href}"${p.id === page ? ' aria-current="page"' : ""}>${p.label}</a>`).join("")}
         </nav>
         <button class="cartbtn" type="button" id="cartbtn" data-open-cart aria-haspopup="dialog" aria-label="Kosár megnyitása, 0 termék">${ICON.bag}<span class="cartbtn__label">Kosár</span><span class="cartbtn__count" data-cart-count hidden>0</span></button>
       </div>
-    </div>`;
+    </header>`;
   }
 
   function footerHTML() {
@@ -219,14 +227,6 @@
     }
   });
 
-  function setupHeader() {
-    const hdr = $("#hdr");
-    if (!hdr) return;
-    const onScroll = () => hdr.classList.toggle("is-scrolled", hdr.getBoundingClientRect().top <= 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-  }
-
   // ======================= BEÚSZÁS =======================
   SA.observeReveal = function (root = document) {
     const els = root.querySelectorAll(".reveal:not(.is-in), .reveal-img:not(.is-in)");
@@ -256,8 +256,9 @@
     const hs = $("#site-header"), fs = $("#site-footer");
     if (hs) hs.outerHTML = headerHTML(page);
     if (fs) fs.outerHTML = footerHTML();
-    document.querySelectorAll("[data-open-now]").forEach((el) => { const s = SA.openState(); el.textContent = s.text; el.classList.toggle("is-open", s.open); });
-    setupHeader();
+    const st = SA.openState();
+    document.querySelectorAll("[data-open-now]").forEach((el) => { el.textContent = st.text; el.classList.toggle("is-open", st.open); });
+    document.querySelectorAll("[data-open-dot]").forEach((el) => el.classList.toggle("is-open", st.open));
     renderBadge();
     SA.observeReveal();
   });
