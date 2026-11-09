@@ -4,14 +4,15 @@
    Betűk: Unbounded (címek) · Geist (szöveg) · Geist Mono (címkék, adatok) · Courgette (a logó betűje, kiemelt szavak)
    ===================================================================== */
 :root {
-  --bg: #f5f4f7;
+  /* kicsit melegebb, családiasabb árnyalatok (a hideg szürke helyett) */
+  --bg: #f7f4f2;
   --white: #fff;
-  --ink: #111013;
-  --ink-2: #3b3940;
-  --mute: #7c7983;
+  --ink: #1b1618;
+  --ink-2: #453c40;
+  --mute: #857a7e;
   --graphite: #6b6b6b;
-  --line: rgb(17 16 19 / .09);
-  --line-2: rgb(17 16 19 / .16);
+  --line: rgb(27 22 24 / .09);
+  --line-2: rgb(27 22 24 / .16);
   --p1: #f5a3bd;
   --p2: #ee7ea0;
   --p3: #e36692;
@@ -30,7 +31,7 @@
   --r-lg: 32px;
   --hdr-h: 0px; /* a fejléc nem ragad fel; a ragadós elemek (szűrősáv) a lap tetejéhez igazodnak */
   --ease: cubic-bezier(.2, .7, .1, 1);
-  --shadow: 0 1px 1px rgb(17 16 19 / .03), 0 18px 40px -22px rgb(17 16 19 / .22);
+  --shadow: 0 1px 1px rgb(60 36 40 / .04), 0 18px 40px -22px rgb(60 36 40 / .24);
   --glow: 0 0 0 1px rgb(227 102 146 / .18), 0 18px 44px -18px rgb(227 102 146 / .55);
 }
 
@@ -40,9 +41,9 @@
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 120px; -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--bg); color: var(--ink-2); font: 400 16.5px/1.65 var(--f-ui); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
-/* finom rózsaszín „aurora” a háttérben */
+/* finom, meleg „aurora” a háttérben: egy kevés rózsaszín és egy kis barackos melegség */
 body::before { content: ""; position: fixed; inset: -20vh -10vw auto; height: 90vh; z-index: -1; pointer-events: none;
-  background: radial-gradient(40% 50% at 18% 30%, rgb(245 163 189 / .30), transparent 70%), radial-gradient(36% 44% at 82% 12%, rgb(238 126 160 / .20), transparent 70%), radial-gradient(30% 40% at 60% 70%, rgb(255 255 255 / .9), transparent 70%);
+  background: radial-gradient(40% 50% at 18% 30%, rgb(245 163 189 / .2), transparent 70%), radial-gradient(36% 44% at 82% 12%, rgb(255 214 190 / .3), transparent 70%), radial-gradient(30% 40% at 60% 70%, rgb(255 255 255 / .9), transparent 70%);
   filter: blur(20px); }
 body.win-open { overflow: hidden; }
 img { display: block; max-width: 100%; height: auto; }
@@ -113,12 +114,12 @@ button, input, select, textarea { font: inherit; }
 .topbar { background: linear-gradient(90deg, #f5a3bd 0%, #ee7ea0 55%, #e36692 100%); color: var(--ink); font: 400 15px/1.2 var(--f-script); }
 .topbar__in { width: min(100% - 56px, var(--wrap)); margin-inline: auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 9px 0; }
 .topbar p { margin: 0; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-.topbar__open .dot-live { margin-right: -12px; background: rgb(17 16 19 / .45); }
+.topbar__open .dot-live { margin-right: -12px; background: rgb(27 22 24 / .45); }
 .topbar__open .dot-live.is-open { background: #10893f; box-shadow: 0 0 0 3px rgb(255 255 255 / .55); }
-.topbar__today { color: rgb(17 16 19 / .72); }
+.topbar__today { color: rgb(27 22 24 / .72); }
 .topbar a { color: var(--ink); text-decoration: none; transition: color .2s; }
 .topbar a:hover { color: var(--white); }
-.topbar__more { text-decoration: underline !important; text-underline-offset: 3px; text-decoration-color: rgb(17 16 19 / .35) !important; }
+.topbar__more { text-decoration: underline !important; text-underline-offset: 3px; text-decoration-color: rgb(27 22 24 / .35) !important; }
 
 /* ---------- Fejléc: logó és név a bal sarokban, a helyén marad ---------- */
 .hdr { border-bottom: 1px solid var(--line); }
@@ -165,8 +166,8 @@ button, input, select, textarea { font: inherit; }
 .crumbs span[aria-hidden] { opacity: .5; }
 
 /* ---------- Termékkártya ---------- */
-.card { position: relative; display: flex; flex-direction: column; padding: 8px 8px 16px; border-radius: 28px; background: rgb(255 255 255 / .72); border: 1px solid rgb(255 255 255 / .9); box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgb(17 16 19 / .04); transition: transform .5s var(--ease), box-shadow .5s var(--ease); }
-.card:hover { transform: translateY(-4px); box-shadow: inset 0 1px 0 #fff, 0 26px 50px -26px rgb(17 16 19 / .3); }
+.card { position: relative; display: flex; flex-direction: column; padding: 8px 8px 16px; border-radius: 28px; background: rgb(255 255 255 / .72); border: 1px solid rgb(255 255 255 / .9); box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgb(27 22 24 / .04); transition: transform .5s var(--ease), box-shadow .5s var(--ease); }
+.card:hover { transform: translateY(-4px); box-shadow: inset 0 1px 0 #fff, 0 26px 50px -26px rgb(27 22 24 / .3); }
 .card__top { position: relative; }
 .card__media { position: relative; display: block; aspect-ratio: 1; border-radius: 21px; overflow: hidden; background: var(--p-soft); text-decoration: none; }
 .card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); }
@@ -211,7 +212,10 @@ button, input, select, textarea { font: inherit; }
 .chip b { font-weight: 500; }
 .chip .mono { font-size: 11px; color: var(--mute); }
 .chip--live { left: -34px; top: 56px; font-weight: 500; }
-.chip--coord { right: -26px; bottom: 120px; flex-direction: column; align-items: flex-start; gap: 4px; animation-delay: -2.5s; }
+.chip--family { right: -26px; top: 64px; padding: 8px 16px 8px 8px; animation-delay: -2.5s; }
+.chip--family img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; object-position: 50% 18%; }
+.chip--family > span { display: flex; flex-direction: column; gap: 3px; }
+.chip--family .script { font: 400 18px/1 var(--f-script); color: var(--p-text); }
 .chip--tag { left: -48px; bottom: 34px; padding: 8px 14px 8px 8px; animation-delay: -4.5s; }
 .chip--tag img { width: 44px; height: 44px; border-radius: 12px; object-fit: cover; }
 .chip--tag > span { display: flex; flex-direction: column; gap: 3px; }
@@ -246,7 +250,7 @@ button, input, select, textarea { font: inherit; }
 .cal__top span { font: 400 22px/1 var(--f-script); color: var(--p-text); }
 .cal__top small { font: 500 11px/1 var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--mute); }
 .cal__grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 7px; }
-.cal__grid span { aspect-ratio: 1; display: grid; place-items: center; border-radius: 12px; font: 500 13px/1 var(--f-mono); color: var(--ink-2); background: rgb(17 16 19 / .035); border: 1px solid var(--line); transition: transform .3s var(--ease), background-color .3s; }
+.cal__grid span { aspect-ratio: 1; display: grid; place-items: center; border-radius: 12px; font: 500 13px/1 var(--f-mono); color: var(--ink-2); background: rgb(27 22 24 / .035); border: 1px solid var(--line); transition: transform .3s var(--ease), background-color .3s; }
 .cal__grid span:hover { transform: translateY(-2px); background: var(--white); }
 .cal__grid span:nth-child(5n+2) { background: var(--grad); border-color: transparent; color: var(--white); }
 .cal__grid span:nth-child(7n+4) { background: var(--ink); border-color: var(--ink); color: var(--p1); }
@@ -279,7 +283,7 @@ a.duo__card h2, a.duo__card p { position: relative; z-index: 1; max-width: 70%; 
 /* ---------- WEBSHOP ---------- */
 .toolbar { position: sticky; top: calc(var(--hdr-h) + 8px); z-index: 20; margin-bottom: 36px; }
 .toolbar__in { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 6px; border-radius: 28px;
-  background: rgb(255 255 255 / .72); -webkit-backdrop-filter: blur(22px) saturate(1.6); backdrop-filter: blur(22px) saturate(1.6); border: 1px solid rgb(255 255 255 / .9); box-shadow: inset 0 1px 0 #fff, 0 12px 30px -18px rgb(17 16 19 / .3); }
+  background: rgb(255 255 255 / .72); -webkit-backdrop-filter: blur(22px) saturate(1.6); backdrop-filter: blur(22px) saturate(1.6); border: 1px solid rgb(255 255 255 / .9); box-shadow: inset 0 1px 0 #fff, 0 12px 30px -18px rgb(27 22 24 / .3); }
 .chips { display: flex; flex-wrap: nowrap; gap: 2px; overflow-x: auto; scrollbar-width: none; min-width: 0; flex: 1; }
 .chips::-webkit-scrollbar { display: none; }
 .chip-f, .chips .chip { position: static; animation: none; flex-shrink: 0; padding: 10px 16px; border-radius: 999px; border: 0; background: transparent; color: var(--ink-2); font: 500 14px/1 var(--f-ui); cursor: pointer; transition: background-color .25s, color .25s; box-shadow: none; }
@@ -344,7 +348,7 @@ a.duo__card h2, a.duo__card p { position: relative; z-index: 1; max-width: 70%; 
 .acc summary::after { content: "+"; font: 300 22px/1 var(--f-ui); transition: transform .3s var(--ease); }
 .acc details[open] summary::after { transform: rotate(45deg); }
 .acc details p { margin: -2px 0 20px; font-size: 15px; }
-.stickybuy { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 30; display: none; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 8px 8px 20px; border-radius: 999px; background: rgb(17 16 19 / .9); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); color: var(--white); box-shadow: 0 20px 40px -14px rgb(0 0 0 / .45); transform: translateY(140%); transition: transform .4s var(--ease); }
+.stickybuy { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 30; display: none; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 8px 8px 20px; border-radius: 999px; background: rgb(27 22 24 / .9); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); color: var(--white); box-shadow: 0 20px 40px -14px rgb(0 0 0 / .45); transform: translateY(140%); transition: transform .4s var(--ease); }
 .stickybuy.is-on { transform: none; }
 .stickybuy b { display: block; font-weight: 500; font-size: 14px; }
 .stickybuy span { font: 400 11.5px/1 var(--f-mono); color: var(--p1); }
@@ -374,7 +378,7 @@ a.duo__card h2, a.duo__card p { position: relative; z-index: 1; max-width: 70%; 
 .round-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 
 /* ---------- Űrlap ---------- */
-.seg { border: 0; padding: 4px; margin: 0 0 26px; display: flex; gap: 2px; background: rgb(17 16 19 / .05); border-radius: 999px; }
+.seg { border: 0; padding: 4px; margin: 0 0 26px; display: flex; gap: 2px; background: rgb(27 22 24 / .05); border-radius: 999px; }
 .seg label { flex: 1; cursor: pointer; }
 .seg input { position: absolute; opacity: 0; pointer-events: none; }
 .seg span { display: block; text-align: center; padding: 11px 10px; border-radius: 999px; font: 500 14px/1.2 var(--f-ui); color: var(--ink-2); transition: all .3s var(--ease); }
@@ -408,7 +412,7 @@ a.duo__card h2, a.duo__card p { position: relative; z-index: 1; max-width: 70%; 
 .opt input:focus-visible + span { outline: 2px solid var(--p3); outline-offset: 2px; }
 .opt input:disabled + span { opacity: .5; cursor: not-allowed; }
 .addr[hidden] { display: none; }
-.hint { font: 400 12.5px/1.5 var(--f-mono); color: var(--ink-2); background: rgb(17 16 19 / .04); border-radius: var(--r-sm); padding: 12px 14px; margin: 0; }
+.hint { font: 400 12.5px/1.5 var(--f-mono); color: var(--ink-2); background: rgb(27 22 24 / .04); border-radius: var(--r-sm); padding: 12px 14px; margin: 0; }
 
 /* ---------- RÓLUNK ---------- */
 .wide-img { border-radius: 40px; overflow: hidden; padding: 8px; background: rgb(255 255 255 / .6); border: 1px solid #fff; box-shadow: var(--shadow); }
@@ -467,7 +471,7 @@ a.duo__card h2, a.duo__card p { position: relative; z-index: 1; max-width: 70%; 
 .ftr__legal p { margin: 0; font: 400 11.5px/1.5 var(--f-mono); color: rgb(255 255 255 / .42); }
 
 /* ---------- Toast ---------- */
-.toast { position: fixed; left: 50%; bottom: 22px; z-index: 95; transform: translate(-50%, 160%); display: flex; align-items: center; gap: 14px; max-width: min(94vw, 560px); padding: 8px 8px 8px 20px; border-radius: 999px; background: rgb(17 16 19 / .9); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); color: var(--white); box-shadow: 0 22px 44px -14px rgb(0 0 0 / .45); font-size: 14px; transition: transform .45s var(--ease); }
+.toast { position: fixed; left: 50%; bottom: 22px; z-index: 95; transform: translate(-50%, 160%); display: flex; align-items: center; gap: 14px; max-width: min(94vw, 560px); padding: 8px 8px 8px 20px; border-radius: 999px; background: rgb(27 22 24 / .9); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); color: var(--white); box-shadow: 0 22px 44px -14px rgb(0 0 0 / .45); font-size: 14px; transition: transform .45s var(--ease); }
 .toast.is-on { transform: translate(-50%, 0); }
 .toast b { font-weight: 500; }
 .toast__btn { flex-shrink: 0; height: 38px; padding: 0 16px; border-radius: 999px; border: 0; background: var(--white); color: var(--ink); font: 500 13.5px/1 var(--f-ui); cursor: pointer; }
@@ -477,15 +481,15 @@ a.duo__card h2, a.duo__card p { position: relative; z-index: 1; max-width: 70%; 
    KOSÁR ABLAK (<dialog>)
    ===================================================================== */
 .win { width: min(1060px, 100% - 32px); max-height: min(90vh, 880px); max-height: min(90dvh, 880px); padding: 0; border: 1px solid rgb(255 255 255 / .9); border-radius: 34px; color: var(--ink-2);
-  background: rgb(248 247 250 / .9); -webkit-backdrop-filter: blur(30px) saturate(1.6); backdrop-filter: blur(30px) saturate(1.6); box-shadow: inset 0 1px 0 #fff, 0 40px 90px -30px rgb(17 16 19 / .5); overflow: hidden; }
+  background: rgb(248 247 250 / .9); -webkit-backdrop-filter: blur(30px) saturate(1.6); backdrop-filter: blur(30px) saturate(1.6); box-shadow: inset 0 1px 0 #fff, 0 40px 90px -30px rgb(27 22 24 / .5); overflow: hidden; }
 .win[open] { display: flex; flex-direction: column; animation: win-in .45s var(--ease); }
-.win::backdrop { background: rgb(17 16 19 / .28); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); animation: fade .35s ease; }
+.win::backdrop { background: rgb(27 22 24 / .28); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); animation: fade .35s ease; }
 @keyframes win-in { from { opacity: 0; transform: translateY(18px) scale(.98); } }
 @keyframes fade { from { opacity: 0; } }
 .win__head { flex-shrink: 0; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 22px 18px 30px; border-bottom: 1px solid var(--line); }
 .win__titles { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
 .win__title { margin: 0; font: 300 26px/1 var(--f-disp); letter-spacing: -.04em; color: var(--ink); }
-.wsteps { display: flex; gap: 6px; list-style: none; margin: 0; padding: 4px; border-radius: 999px; background: rgb(17 16 19 / .05); }
+.wsteps { display: flex; gap: 6px; list-style: none; margin: 0; padding: 4px; border-radius: 999px; background: rgb(27 22 24 / .05); }
 .wsteps li { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; font: 500 12.5px/1 var(--f-ui); color: var(--mute); }
 .wsteps i { font: 500 10.5px/1 var(--f-mono); font-style: normal; }
 .wsteps .is-on { background: var(--ink); color: var(--white); }
@@ -526,7 +530,7 @@ a.duo__card h2, a.duo__card p { position: relative; z-index: 1; max-width: 70%; 
 .sumrow--total span:last-child { font: 300 26px/1 var(--f-disp); letter-spacing: -.04em; }
 .freebar { margin: 8px 0 6px; font: 400 12px/1.4 var(--f-mono); color: var(--ink-2); }
 .freebar b { color: var(--ink); font-weight: 500; }
-.freebar__track { height: 4px; border-radius: 999px; background: rgb(17 16 19 / .07); margin-top: 8px; overflow: hidden; }
+.freebar__track { height: 4px; border-radius: 999px; background: rgb(27 22 24 / .07); margin-top: 8px; overflow: hidden; }
 .freebar__fill { height: 100%; border-radius: inherit; background: var(--grad); box-shadow: 0 0 10px rgb(227 102 146 / .6); transition: width .5s var(--ease); }
 .safe { text-align: center; font: 400 11.5px/1.4 var(--f-mono); color: var(--mute); margin: 8px 0 0; }
 .wempty { text-align: center; padding: 34px 0 10px; }
@@ -568,7 +572,7 @@ a.duo__card h2, a.duo__card p { position: relative; z-index: 1; max-width: 70%; 
   .hhero__in, .story, .advent, .custom, .editorial, .phero__in, .pdp { grid-template-columns: 1fr; }
   .hhero__media { justify-self: center; }
   .chip--live { left: -12px; }
-  .chip--coord { right: -12px; }
+  .chip--family { right: -12px; }
   .chip--tag { left: -14px; }
   .stats { grid-template-columns: 1fr 1fr; }
   .stats div:nth-child(3) { border-left: 0; }
@@ -617,7 +621,7 @@ a.duo__card h2, a.duo__card p { position: relative; z-index: 1; max-width: 70%; 
   .card__meta { flex-direction: column; align-items: flex-start; gap: 6px; padding-top: 10px; margin-top: 10px; }
   .card__lead { text-align: left; }
   .chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
-  .chip--coord { display: none; }
+  .chip--family { right: 8px; top: 14px; }
   .chip--live { top: 18px; left: 8px; }
   .chip--tag { left: 8px; bottom: 14px; }
   .stats div { padding: 18px; }
