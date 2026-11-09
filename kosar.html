@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Kosár – Sütit akarok!</title>
   <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#fbf7f4">
   <link rel="icon" href="img/logo-240.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,84 +13,28 @@
   <link rel="stylesheet" href="styles.css">
   <script>document.documentElement.classList.add('js')</script>
 </head>
-<body>
+<body data-page="kosar">
   <a class="skip" href="#tartalom">Ugrás a tartalomra</a>
-
-  <header class="hdr">
-    <div class="hdr__in">
-      <a class="hdr__brand" href="index.html" aria-label="Sütit akarok! – kezdőlap">
-        <img src="img/logo-240.png" alt="" width="52" height="52">
-        <span>Sütit akarok!</span>
-      </a>
-      <nav class="hdr__nav" id="nav" aria-label="Fő menü">
-        <a href="index.html#webshop">Webshop</a>
-        <a href="index.html#egyedi">Egyedi torta</a>
-        <a href="index.html#advent">Advent</a>
-        <a href="index.html#rolunk">Rólunk</a>
-        <a href="index.html#info">Elérhetőség</a>
-      </nav>
-      <div class="hdr__tools">
-        <a class="hdr__phone" href="tel:+36309792948">06 30 979 2948</a>
-        <a class="cartbtn" href="kosar.html" data-cart-link aria-current="page" aria-label="Kosár">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1.2 11.2a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8L6 8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
-          <span class="cartbtn__label">Kosár</span>
-          <span class="cartbtn__count" data-cart-count hidden>0</span>
-        </a>
-        <button class="hdr__burger" aria-expanded="false" aria-controls="nav" aria-label="Menü megnyitása"><span></span><span></span><span></span></button>
-      </div>
-    </div>
-  </header>
+  <div id="site-header"></div>
 
   <main id="tartalom">
-    <div class="page-head">
+    <section class="phero" style="padding-bottom:40px">
       <div class="wrap">
-        <nav class="crumbs" aria-label="Morzsamenü"><a href="index.html">Főoldal</a><span aria-hidden="true">/</span><a href="index.html#webshop">Webshop</a><span aria-hidden="true">/</span><span>Kosár</span></nav>
-        <h1 id="page-title">Kosár</h1>
+        <nav class="crumbs" aria-label="Morzsamenü"><a href="index.html">Főoldal</a><span aria-hidden="true">/</span><a href="webshop.html">Webshop</a><span aria-hidden="true">/</span><span>Kosár</span></nav>
+        <h1 class="d2" id="page-title">Kosár</h1>
         <ol class="steps" id="steps" aria-label="A rendelés lépései">
-          <li class="is-on"><b>1</b>Kosár és adatok</li>
+          <li class="is-on" aria-current="step"><b>1</b>Kosár és adatok</li>
           <li><b>2</b>Elküldés</li>
           <li><b>3</b>Visszaigazolás</li>
         </ol>
       </div>
-    </div>
-
+    </section>
     <div class="wrap" id="view"></div>
   </main>
 
-  <footer class="ftr">
-    <div class="wrap ftr__in">
-      <div class="ftr__brand">
-        <img src="img/logo-240.png" alt="" width="84" height="84">
-        <p class="ftr__script">Sütit akarok!</p>
-        <p>Cukrászda és fagyizó<br>1023 Budapest, Frankel Leó út 72.</p>
-      </div>
-      <nav class="ftr__col" aria-label="Webshop">
-        <p class="ftr__h">Webshop</p>
-        <a href="index.html#webshop">Összes termék</a>
-        <a href="index.html#advent">Adventi naptár</a>
-        <a href="index.html#egyedi">Egyedi torta</a>
-      </nav>
-      <nav class="ftr__col" aria-label="Információ">
-        <p class="ftr__h">Információ</p>
-        <a href="index.html#rolunk">Rólunk</a>
-        <a href="index.html#info">Nyitvatartás</a>
-        <a href="#">ÁSZF</a>
-        <a href="#">Adatkezelés</a>
-      </nav>
-      <div class="ftr__col">
-        <p class="ftr__h">Kapcsolat</p>
-        <a href="tel:+36309792948">06 30 979 2948</a>
-        <a href="mailto:sutitakarok.abolt@gmail.com">sutitakarok.abolt@gmail.com</a>
-      </div>
-    </div>
-    <div class="wrap ftr__legal">
-      <p>© <span data-year></span> Sütit akarok!</p>
-      <p>Az árak mintaárak.</p>
-    </div>
-  </footer>
-
+  <div id="site-footer"></div>
   <script src="js/data.js"></script>
-  <script src="js/cart.js"></script>
+  <script src="js/core.js"></script>
   <script src="js/kosar.js"></script>
 </body>
 </html>

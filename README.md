@@ -1,8 +1,8 @@
 # Sütit akarok! – weboldal és webshop
 
-Statikus weboldal és webshop a **Sütit akarok!** cukrászdának és fagyizónak
-(1023 Budapest, Frankel Leó út 72.). Nincs build-lépés és függőség: két oldalból
-(`index.html`, `kosar.html`), egy stíluslapból és néhány sima JavaScript-fájlból áll.
+Többoldalas, statikus weboldal és webshop a **Sütit akarok!** cukrászdának és fagyizónak
+(1023 Budapest, Frankel Leó út 72.). Nincs build-lépés és függőség: HTML-oldalakból,
+egy közös stíluslapból és néhány sima JavaScript-fájlból áll.
 
 ## Futtatás helyben
 
@@ -18,15 +18,21 @@ Utána nyisd meg a böngészőben: http://localhost:8140
 
 | Fájl / mappa | Tartalom |
 |---|---|
-| `index.html` | Főoldal: hero, webshop (kategóriaszűrő, méretválasztó, kosárba rakás), adventi naptár, egyedi torta ajánlatkérő, rólunk, elérhetőség |
-| `kosar.html` | Külön kosár- és pénztároldal: tételek, átvétel vagy kiszállítás, dátum és idősáv, adatok, összesítő, visszaigazolás |
+| `index.html` | Főoldal: hero, kiemelt termékek sávja, kategóriák, történet, adventi naptár, egyedi torta, sajtó, látogatás |
+| `webshop.html` | Teljes kínálat kategóriaszűrővel, kereséssel és rendezéssel (a beállítás az URL-ben is megmarad, pl. `?cat=torta`) |
+| `termek.html?id=…` | Termékoldal: méretválasztó, mennyiség, információs blokkok, kapcsolódó termékek, mobilon rögzített kosár-sáv |
+| `egyedi-torta.html` | Egyedi torta, esküvői torta, desszertasztal, a folyamat lépései és az ajánlatkérő űrlap |
+| `rolunk.html` | Gerti és Ati története, idővonal, értékek, galéria, sajtó |
+| `kapcsolat.html` | Cím, útvonal, nyitvatartás, elérhetőségek, térkép |
+| `kosar.html` | Kosár és pénztár: tételek, átvétel vagy kiszállítás, dátum és idősáv, adatok, összesítő, visszaigazolás |
 | `styles.css` | Közös stílusok. A színek (a logóból) és a betűk a `:root` változókban vannak |
 | `js/data.js` | **Termékek, árak, beállítások** (`SA.CONFIG`, `SA.CATS`, `SA.PRODUCTS`). Itt kell módosítani a kínálatot |
-| `js/cart.js` | Közös kosár (localStorage), fejléc, toast, küldés (CRM-webhook vagy mailto) |
-| `js/home.js` | Főoldali termékrács, szűrők, naptár, nyitvatartás, ajánlatkérő |
-| `js/kosar.js` | Kosár oldal: mennyiségek, átvételi mód, dátumszabályok, rendelés elküldése |
+| `js/core.js` | Minden oldalra: kosár (localStorage), a fejléc és a lábléc beillesztése, oldalról becsúszó mini-kosár, termékkártya, toast, beúszó animációk, küldés (CRM-webhook vagy mailto) |
+| `js/home.js`, `js/shop.js`, `js/product.js`, `js/pages.js`, `js/kosar.js` | Oldalankénti szkriptek |
 | `img/termek/` | Négyzetes termékfotók |
-| `img/foto/` | Nagy fotók (hero, rólunk, egyedi torta) |
+| `img/foto/` | Nagy fotók (hero, csempék, rólunk, kapcsolat) |
+
+A fejléc és a lábléc egy helyen, a `js/core.js` fájlban van megírva, és minden oldalra innen kerül be (`<div id="site-header">` és `<div id="site-footer">`). A menüpontokat ott kell módosítani.
 | `KUTATAS.md` | Háttérkutatás a partnerről, valamint a fotók forrásai |
 | `v1-gozgomboc-ora/` | Korábbi dizájnváltozat, archívumként megtartva |
 

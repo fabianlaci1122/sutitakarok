@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kapcsolat és nyitvatartás – Sütit akarok!</title>
+  <meta name="description" content="Sütit akarok! cukrászda és fagyizó: 1023 Budapest, Frankel Leó út 72. Nyitvatartás, útvonal, telefon és e-mail.">
+  <meta name="theme-color" content="#fbf7f4">
+  <link rel="icon" href="img/logo-240.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="kapcsolat">
+  <a class="skip" href="#tartalom">Ugrás a tartalomra</a>
+  <div id="site-header"></div>
+
+  <main id="tartalom">
+    <section class="phero">
+      <div class="wrap">
+        <nav class="crumbs" aria-label="Morzsamenü"><a href="index.html">Főoldal</a><span aria-hidden="true">/</span><span>Kapcsolat</span></nav>
+        <div class="phero__in">
+          <h1 class="d2">Gyere be<br><span class="rose">egy sütire</span></h1>
+          <p class="lead">A Margit híd budai hídfőjétől pár perc sétára várunk kávéval, sütivel és fagyival. <span class="hhero__open" style="position:static;display:inline-flex;margin-top:14px;background:var(--white)"><i class="dot-live" id="live"></i><span data-open-now></span></span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec sec--tight" aria-label="Elérhetőségek">
+      <div class="wrap contact-grid">
+        <div class="ccard reveal">
+          <p class="label">Cím</p>
+          <h2>Frankel Leó út 72.</h2>
+          <p>1023 Budapest, II. kerület. A Frankel Leó úton a 17-es villamos jár, a 4-es és 6-os a Margit híd budai hídfőjénél áll meg. Utcán fizetős parkolás.</p>
+          <a class="btn btn--primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=Budapest%2C%20Frankel%20Le%C3%B3%20%C3%BAt%2072" target="_blank" rel="noopener">Útvonaltervezés</a>
+        </div>
+        <div class="ccard reveal d-1">
+          <p class="label">Nyitvatartás</p>
+          <table class="hours" id="hours" aria-label="Nyitvatartás"></table>
+          <!-- TODO: nyitvatartás egyeztetése a partnerrel -->
+        </div>
+        <div class="ccard reveal d-2">
+          <p class="label">Írj vagy hívj</p>
+          <a class="big" href="tel:+36309792948">06 30 979 2948</a>
+          <a class="big" href="mailto:sutitakarok.abolt@gmail.com" style="font-size:16px">sutitakarok.abolt@gmail.com</a>
+          <p style="margin-top:14px">Gőzgombócot és tortát telefonon is előrendelhetsz. Kövess minket az Instagramon: <a href="https://www.instagram.com/sutitakarok/" target="_blank" rel="noopener" style="color:var(--rose-700);font-weight:700">@sutitakarok</a></p>
+          <a class="btn btn--ghost" href="egyedi-torta.html">Egyedi tortát kérek</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec sec--tight" aria-label="Térkép">
+      <div class="wrap">
+        <div class="map reveal">
+          <iframe title="Térkép: Sütit akarok!, 1023 Budapest, Frankel Leó út 72." loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Budapest%2C%20Frankel%20Le%C3%B3%20%C3%BAt%2072&amp;z=16&amp;output=embed"></iframe>
+        </div>
+        <ul class="amen reveal" style="margin-top:28px" aria-label="Szolgáltatások">
+          <li>Kutyabarát</li><li>Terasz</li><li>Akadálymentes</li><li>Kártyás fizetés</li><li>Reggeli egész nap</li><li>Helyben fogyasztás és elvitel</li>
+        </ul>
+      </div>
+    </section>
+    <div style="height:clamp(56px,7vw,110px)"></div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/data.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/pages.js"></script>
+</body>
+</html>

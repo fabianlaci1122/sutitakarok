@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Termék – Sütit akarok!</title>
+  <meta name="description" content="Rendeld meg online a Sütit akarok! cukrászdától, és vedd át a Frankel Leó úton vagy kérd házhoz Budapesten.">
+  <meta name="theme-color" content="#fbf7f4">
+  <link rel="icon" href="img/logo-240.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="webshop">
+  <a class="skip" href="#tartalom">Ugrás a tartalomra</a>
+  <div id="site-header"></div>
+
+  <main id="tartalom">
+    <div class="wrap" id="pdp"></div>
+    <section class="sec sec--white" id="related-sec" aria-labelledby="rel-title" hidden>
+      <div class="wrap">
+        <div class="sec__head">
+          <div><p class="label">Ehhez is jól illik</p><h2 class="h2" id="rel-title">Ezt is akarni fogod</h2></div>
+          <a class="link-arrow" href="webshop.html">Teljes kínálat <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="grid" id="related"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="stickybuy" id="stickybuy" aria-hidden="true">
+    <div><b id="sb-name"></b><span id="sb-price"></span></div>
+    <button class="btn btn--primary btn--sm" type="button" id="sb-add" tabindex="-1">Kosárba</button>
+  </div>
+
+  <div id="site-footer"></div>
+  <script src="js/data.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/product.js"></script>
+</body>
+</html>

@@ -8,8 +8,8 @@
   let mode = "cart"; // cart | done
 
   const imgOrPh = (p, cls) => p.img
-    ? `<img class="${cls}" src="${p.img}" alt="" width="84" height="84">`
-    : `<div class="${cls} ph" aria-hidden="true">${esc(p.name)}</div>`;
+    ? `<img class="${cls}" src="${p.img}" alt="" width="96" height="96">`
+    : SA.ph(p, `${cls} ph`);
 
   const hasFrozen = () => SA.cart.lines().some((l) => l.p.cat === "fagyi");
 
@@ -19,11 +19,11 @@
     const picks = ["malnas-sajttorta", "gozgomboc", "valogatott-doboz", "fagyi-doboz"].map(SA.byId).filter(Boolean);
     $("#view").innerHTML = `
       <div class="empty">
-        <div class="ph-big"><img src="img/logo-240.png" alt=""></div>
+        <div class="empty__logo"><img src="img/logo-240.png" alt=""></div>
         <h2>Még üres a kosarad</h2>
-        <p>Pedig tudjuk, hogy sütit akarsz. Nézz szét a kínálatban!</p>
-        <a class="btn btn--primary btn--lg" href="index.html#webshop">Vissza a webshopba</a>
-        <div class="suggest">${picks.map((p) => `<a href="index.html#webshop">${imgOrPh(p, "")}<span>${esc(p.name)}</span></a>`).join("")}</div>
+        <p class="lead" style="margin:0 auto 30px">Pedig tudjuk, hogy sütit akarsz. Nézz szét a kínálatban!</p>
+        <a class="btn btn--primary btn--lg" href="webshop.html">Irány a webshop</a>
+        <div class="grid">${picks.map(SA.card).join("")}</div>
       </div>`;
   }
 
@@ -33,12 +33,12 @@
       <form class="checkout" id="order" novalidate>
         <div class="checkout__main">
           <section class="panel" aria-labelledby="h-items">
-            <h2 id="h-items"><span class="num">1</span>A kosarad</h2>
+            <h2 class="ptitle" id="h-items"><span class="num">1</span>A kosarad</h2>
             <ul class="lines" id="lines"></ul>
           </section>
 
           <section class="panel" aria-labelledby="h-mode">
-            <h2 id="h-mode"><span class="num">2</span>Átvétel</h2>
+            <h2 class="ptitle" id="h-mode"><span class="num">2</span>Átvétel</h2>
             <div class="opts">
               <label class="opt"><input type="radio" name="mod" value="atvetel" checked><span><b>Személyes átvétel</b><small>Frankel Leó út 72., Budapest II.</small><small><em>Ingyenes</em></small></span></label>
               <label class="opt"><input type="radio" name="mod" value="kiszallitas" id="opt-delivery"><span><b>Kiszállítás Budapesten</b><small id="delivery-note">Hűtött dobozban, a megadott idősávban</small><small><em>${SA.ft(C.DELIVERY_FEE)}</em>, ${SA.ft(C.FREE_DELIVERY_FROM)} felett ingyenes</small></span></label>
@@ -58,7 +58,7 @@
           </section>
 
           <section class="panel" aria-labelledby="h-data">
-            <h2 id="h-data"><span class="num">3</span>Adataid</h2>
+            <h2 class="ptitle" id="h-data"><span class="num">3</span>Adataid</h2>
             <div class="grid2">
               <label class="field"><span>Teljes név</span><input name="nev" autocomplete="name" required></label>
               <label class="field"><span>Telefonszám</span><input name="telefon" type="tel" autocomplete="tel" placeholder="06 30 123 4567" required></label>
@@ -68,7 +68,7 @@
           </section>
 
           <section class="panel" aria-labelledby="h-pay">
-            <h2 id="h-pay"><span class="num">4</span>Fizetés</h2>
+            <h2 class="ptitle" id="h-pay"><span class="num">4</span>Fizetés</h2>
             <div class="opts">
               <label class="opt"><input type="radio" name="fizetes" value="Átvételkor" checked><span><b>Fizetés átvételkor</b><small>Bankkártyával vagy készpénzzel</small></span></label>
               <label class="opt"><input type="radio" name="fizetes" value="Online" disabled><span><b>Online bankkártya</b><small>Hamarosan</small></span></label>
@@ -78,7 +78,7 @@
         </div>
 
         <aside class="panel summary" aria-labelledby="h-sum">
-          <h2 id="h-sum">Összesítő</h2>
+          <h2 class="ptitle" id="h-sum">Összesítő</h2>
           <div id="sum"></div>
           <label class="check"><input type="checkbox" name="aszf" required><span>Elfogadom az <a href="#">ÁSZF-et</a> és az <a href="#">adatkezelési tájékoztatót</a>.</span></label>
           <p class="form__err" id="err" role="alert"></p>
@@ -104,13 +104,13 @@
       <li class="line">
         ${imgOrPh(l.p, "line__img")}
         <div>
-          <h3>${esc(l.p.name)}</h3>
+          <h3><a href="termek.html?id=${l.p.id}">${esc(l.p.name)}</a></h3>
           <p class="line__meta">${esc(l.variant)} · ${SA.ft(l.price)}</p>
           <div class="line__ctrl">
             <div class="qty" role="group" aria-label="${esc(l.p.name)} mennyiség">
-              <button type="button" data-qty="${l.id}:${l.v}:-1" aria-label="Eggyel kevesebb">−</button>
+              <button type="button" data-step="${l.id}:${l.v}:-1" aria-label="Eggyel kevesebb">−</button>
               <output aria-live="polite">${l.qty}</output>
-              <button type="button" data-qty="${l.id}:${l.v}:1" aria-label="Eggyel több">+</button>
+              <button type="button" data-step="${l.id}:${l.v}:1" aria-label="Eggyel több">+</button>
             </div>
             <button type="button" class="line__rm" data-rm="${l.id}:${l.v}">Törlés</button>
           </div>
@@ -189,17 +189,8 @@
     sel.innerHTML = slots.length ? slots.map((s) => `<option${s === prev ? " selected" : ""}>${s}</option>`).join("") : `<option value="">Erre a napra már nincs szabad idősáv</option>`;
   }
 
-  // ---------- műveletek ----------
+  // ---------- műveletek (a +/− léptetést a core.js kezeli: data-step) ----------
   document.addEventListener("click", (e) => {
-    const q = e.target.closest("[data-qty]");
-    if (q) {
-      const [id, v, d] = q.dataset.qty.split(":");
-      const line = SA.cart.lines().find((l) => l.id === id && l.v === +v);
-      if (line) {
-        if (line.qty + +d < 1) SA.cart.remove(id, +v); else SA.cart.setQty(id, +v, line.qty + +d);
-      }
-      return;
-    }
     const rm = e.target.closest("[data-rm]");
     if (rm) {
       const [id, v] = rm.dataset.rm.split(":");
@@ -276,7 +267,7 @@
     $("#view").innerHTML = `
       <div class="done">
         <div class="done__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
-        <h1 tabindex="-1" id="done-title">${via === "crm" ? "Megkaptuk a rendelésed" : "Már csak el kell küldened"}</h1>
+        <h2 tabindex="-1" id="done-title">${via === "crm" ? "Megkaptuk a rendelésed" : "Már csak el kell küldened"}</h2>
         <p>${via === "crm"
           ? `Visszaigazolást küldtünk a(z) <strong>${esc(order.email)}</strong> címre.`
           : "Megnyitottuk a rendelést az e-mail-programodban. Küldd el, és visszaigazoljuk."}</p>
@@ -288,7 +279,7 @@
           <div class="sumrow"><span>Cím</span><span>${esc(order.cim)}</span></div>
         </div>
         ${via === "mail" ? `<p><a class="btn btn--ghost" id="resend" href="mailto:${C.ORDER_EMAIL}?subject=${encodeURIComponent("Webshop rendelés " + order.rendelesszam)}&body=${encodeURIComponent(body)}">E-mail újbóli megnyitása</a></p>` : ""}
-        <a class="btn btn--primary btn--lg" href="index.html#webshop">Vissza a webshopba</a>
+        <a class="btn btn--primary btn--lg" href="webshop.html">Vissza a webshopba</a>
       </div>`;
     $("#done-title").focus();
     window.scrollTo({ top: 0 });

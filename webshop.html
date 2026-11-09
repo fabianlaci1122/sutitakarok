@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Webshop – Sütit akarok!</title>
+  <meta name="description" content="Sajttorták, flódni, gőzgombóc, sütisdobozok és házi fagyi online rendelése. Átvétel a Frankel Leó úton vagy kiszállítás Budapesten.">
+  <meta name="theme-color" content="#fbf7f4">
+  <link rel="icon" href="img/logo-240.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="webshop">
+  <a class="skip" href="#tartalom">Ugrás a tartalomra</a>
+  <div id="site-header"></div>
+
+  <main id="tartalom">
+    <section class="phero">
+      <div class="wrap">
+        <nav class="crumbs" aria-label="Morzsamenü"><a href="index.html">Főoldal</a><span aria-hidden="true">/</span><span>Webshop</span></nav>
+        <div class="phero__in">
+          <h1 class="d2">Webshop</h1>
+          <p class="lead">Válassz, és vedd át a boltban, vagy kérd házhoz Budapesten. A pultos sütik akár aznapra, az egész torták 3 nappal előre rendelhetők.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="toolbar">
+      <div class="wrap toolbar__in">
+        <div class="chips" id="chips" role="tablist" aria-label="Kategóriák"></div>
+        <div class="tools">
+          <label class="search"><span class="sr">Keresés a termékek között</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            <input type="search" id="q" placeholder="Keresés…" autocomplete="off">
+          </label>
+          <label><span class="sr">Rendezés</span>
+            <select class="sel" id="sort">
+              <option value="rec">Ajánlott</option>
+              <option value="asc">Ár szerint növekvő</option>
+              <option value="desc">Ár szerint csökkenő</option>
+              <option value="name">Név szerint</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <section class="wrap" aria-label="Termékek">
+      <p class="count" id="count" aria-live="polite"></p>
+      <div class="grid" id="grid"></div>
+      <p class="muted small center" style="margin-top:56px">Az árak mintaárak. A kínálat naponta változik; ha valami épp elfogy, telefonon egyeztetünk.</p>
+      <!-- TODO: valódi árlista és termékfotók a partnertől -->
+
+      <div class="shop-banner reveal">
+        <img src="img/foto/fagyi-banner.jpg" alt="" loading="lazy" width="1800" height="588">
+        <div class="shop-banner__in">
+          <p class="label label--light">Egyedi rendelés</p>
+          <h2 class="h2">Nem találod, amit keresel?</h2>
+          <p>Születésnapi torta felirattal, esküvői torta, desszertasztal. Írd meg, mire van szükséged, és ajánlatot küldünk.</p>
+          <a class="btn btn--light" href="egyedi-torta.html">Egyedi tortát kérek</a>
+        </div>
+      </div>
+    </section>
+    <div style="height:clamp(80px,9vw,140px)"></div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/data.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/shop.js"></script>
+</body>
+</html>
