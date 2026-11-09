@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sütit akarok! – kézműves cukrászda és webshop, Budapest II.</title>
   <meta name="description" content="Sajttorták, flódni, gőzgombóc és házi fagyi a Frankel Leó útról. Rendelj online, és vedd át a boltban, vagy kérd házhoz Budapesten.">
-  <meta name="theme-color" content="#fbf7f4">
+  <meta name="theme-color" content="#f5f4f7">
   <link rel="icon" href="img/logo-240.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Unbounded:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -21,40 +21,33 @@
     <!-- HERO -->
     <section class="hhero">
       <div class="wrap hhero__in">
-        <div>
+        <div class="hhero__copy">
           <p class="label">Kézműves cukrászda · Budapest II.</p>
-          <h1 class="d1 hhero__title"><span>Sütit</span><span>akarok!</span></h1>
-          <p class="lead hhero__lead">Sajttorták, mentes sütik, brownietorták és Budapest legjobb flódnija. Mindent itt sütünk a pult mögött, igazi vajjal, csokoládéval és tejszínnel.</p>
-          <div class="hhero__cta">
+          <h1 class="d1">Házi sütik,<br>online <em class="rose">rendelve.</em></h1>
+          <p class="lead">Sajttorták, mentes sütik, brownietorták és Budapest legjobb flódnija. Mindent a pult mögött sütünk, igazi vajjal, csokoládéval és tejszínnel.</p>
+          <div class="cta">
             <a class="btn btn--primary btn--lg" href="webshop.html">Irány a webshop <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            <a class="btn btn--ghost btn--lg" href="egyedi-torta.html">Egyedi tortát kérek</a>
-          </div>
-          <div class="hhero__stats">
-            <div><b>4,5 ★</b><span>Google, közel 700 vélemény</span></div>
-            <div><b>12 fős</b><span>csapat a pult mögött</span></div>
-            <div><b>13,3 E</b><span>követő Instagramon</span></div>
+            <a class="btn btn--ghost btn--lg" href="egyedi-torta.html">Egyedi torta</a>
           </div>
         </div>
         <div class="hhero__media">
-          <div class="hhero__arch">
+          <div class="hhero__frame">
             <img src="img/foto/hero-portre.jpg" alt="Málnás, pisztáciás és réteges szeletek egy tálon" width="585" height="731" fetchpriority="high">
-            <span class="hhero__open"><i class="dot-live" id="hero-dot"></i><span data-open-now></span></span>
           </div>
-          <div class="hhero__small"><img src="img/termek/gozgomboc.jpg" alt="Mákos gőzgombóc vaníliasodóban" width="255" height="255"></div>
-          <div class="seal" aria-hidden="true">
-            <svg viewBox="0 0 150 150"><defs><path id="circ" d="M75,75 m-58,0 a58,58 0 1,1 116,0 a58,58 0 1,1 -116,0"/></defs><text><textPath href="#circ" textLength="358">Kézzel sütve · Minden nap frissen ·</textPath></text></svg>
-            <img src="img/logo-240.png" alt="">
-          </div>
+          <div class="chip chip--live glass"><i class="dot-live" id="hero-dot"></i><span data-open-now></span></div>
+          <div class="chip chip--coord glass"><span class="mono">47.5211° N · 19.0367° E</span><b>Frankel Leó út 72.</b></div>
+          <div class="chip chip--tag glass"><img src="img/termek/gozgomboc.jpg" alt="" width="44" height="44"><span><b>Gőzgombóc</b><span class="mono">kb. 25 perc · minden nap</span></span></div>
         </div>
       </div>
-    </section>
-
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee__track">
-        <span>Sajttorta</span><span>Flódni</span><span>Gőzgombóc</span><span>Brownietorta</span><span>Pisztáciás fagyi</span><span>Mentes sütik</span><span>Indiáner</span>
-        <span>Sajttorta</span><span>Flódni</span><span>Gőzgombóc</span><span>Brownietorta</span><span>Pisztáciás fagyi</span><span>Mentes sütik</span><span>Indiáner</span>
+      <div class="wrap">
+        <dl class="stats glass">
+          <div><dt>4,5 ★</dt><dd>Google, közel 700 vélemény</dd></div>
+          <div><dt>12 fős</dt><dd>csapat a pult mögött</dd></div>
+          <div><dt>13,3 E</dt><dd>követő Instagramon</dd></div>
+          <div><dt>2024</dt><dd>óta saját fagyi</dd></div>
+        </dl>
       </div>
-    </div>
+    </section>
 
     <!-- KEDVENCEK -->
     <section class="sec" aria-labelledby="fav-title">
@@ -62,12 +55,12 @@
         <div class="sec__head reveal">
           <div>
             <p class="label">A pult kedvencei</p>
-            <h2 class="h2" id="fav-title">Amit mindig akarnak</h2>
+            <h2 class="h2" id="fav-title">Amit mindig <em class="rose">akarnak</em></h2>
           </div>
           <div class="rail-ctrl">
             <button class="iconbtn" type="button" data-rail="-1" aria-label="Előző termékek"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
             <button class="iconbtn" type="button" data-rail="1" aria-label="Következő termékek"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
-            <a class="btn btn--ink btn--sm" href="webshop.html">Teljes kínálat</a>
+            <a class="btn btn--ghost btn--sm" href="webshop.html">Teljes kínálat</a>
           </div>
         </div>
         <div class="rail reveal" id="rail" tabindex="0" aria-label="Kiemelt termékek"></div>
@@ -77,22 +70,22 @@
     <!-- KATEGÓRIÁK -->
     <section class="sec sec--tight" aria-label="Kategóriák">
       <div class="wrap tiles">
-        <a class="tile reveal" href="webshop.html?cat=torta"><img src="img/foto/tile-tortak.jpg" alt="" loading="lazy" width="800" height="1000"><span class="tile__in"><span><small>3 nappal előre</small><strong>Egész torták</strong></span><span class="tile__go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></a>
-        <a class="tile reveal d-1" href="webshop.html?cat=szelet"><img src="img/foto/tile-sutik.jpg" alt="" loading="lazy" width="585" height="731"><span class="tile__in"><span><small>Akár aznapra</small><strong>Sütik és dobozok</strong></span><span class="tile__go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></a>
-        <a class="tile reveal d-2" href="webshop.html?cat=fagyi"><img src="img/foto/tile-fagyi.jpg" alt="" loading="lazy" width="768" height="960"><span class="tile__in"><span><small>Festék nélkül</small><strong>Házi fagyi</strong></span><span class="tile__go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></a>
+        <a class="tile reveal" href="webshop.html?cat=torta"><img src="img/foto/tile-tortak.jpg" alt="" loading="lazy" width="800" height="1000"><span class="tile__in glass"><span><small>3 nappal előre</small><strong>Egész torták</strong></span><span class="tile__go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></a>
+        <a class="tile reveal d-1" href="webshop.html?cat=szelet"><img src="img/foto/tile-sutik.jpg" alt="" loading="lazy" width="585" height="731"><span class="tile__in glass"><span><small>Akár aznapra</small><strong>Sütik és dobozok</strong></span><span class="tile__go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></a>
+        <a class="tile reveal d-2" href="webshop.html?cat=fagyi"><img src="img/foto/tile-fagyi.jpg" alt="" loading="lazy" width="768" height="960"><span class="tile__in glass"><span><small>Festék nélkül</small><strong>Házi fagyi</strong></span><span class="tile__go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></a>
       </div>
     </section>
 
     <!-- TÖRTÉNET -->
-    <section class="sec sec--night" aria-labelledby="story-title">
+    <section class="sec" aria-labelledby="story-title">
       <div class="wrap story">
         <div class="story__media reveal">
           <img class="reveal-img" src="img/foto/tulajok-viragfal.jpg" alt="Gerti és Ati a cukrászda virágfala előtt" loading="lazy" width="1097" height="731">
-          <span class="story__tag">Gerti &amp; Ati</span>
+          <span class="chip chip--name glass">Gerti &amp; Ati</span>
         </div>
         <div class="reveal d-1">
-          <p class="label label--light">A mi történetünk</p>
-          <h2 class="h2" id="story-title">Egy sütis blogból nőttünk ki</h2>
+          <p class="label">A mi történetünk</p>
+          <h2 class="h2" id="story-title">Egy sütis blogból <em class="rose">nőttünk ki</em></h2>
           <p class="lead">Gerti és Ati táncot tanítottak, amikor Gerti blogolni kezdett a sütijeiről, mert a barátai folyton receptet kértek tőle.</p>
           <p>Két háztartási sütővel és egy ötliteres keverőgéppel indultak. Ma egy tizenkét fős csapattal dolgoznak a Frankel Leó úton, és ma is a saját, kipróbált receptjeikből sütnek.</p>
           <a class="link-arrow" href="rolunk.html">Ismerj meg minket <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -101,41 +94,48 @@
     </section>
 
     <!-- ADVENT -->
-    <section class="sec sec--rose" aria-labelledby="advent-title">
-      <div class="wrap advent">
-        <div class="reveal">
-          <p class="label">Limitált · decemberre</p>
-          <h2 class="h2" id="advent-title">Adventi naptár</h2>
-          <p class="lead">24 meglepicsomag és 2 cukiság, minden decemberi napra egy. Ajándéknak is tökéletes annak, aki nagyon sütit akar.</p>
-          <div class="price-tag"><b>11 990 Ft</b><span class="muted">átvétel a boltban</span></div>
-          <div class="hhero__cta">
-            <button class="btn btn--primary btn--lg" type="button" data-add="adventi-naptar">Kosárba teszem</button>
-            <a class="btn btn--ghost btn--lg" href="termek.html?id=adventi-naptar">Részletek</a>
+    <section class="sec" aria-labelledby="advent-title">
+      <div class="wrap">
+        <div class="panel panel--glow advent">
+          <div class="reveal">
+            <p class="label">Limitált · decemberre</p>
+            <h2 class="h2" id="advent-title">Adventi <em class="rose">naptár</em></h2>
+            <p class="lead">24 meglepicsomag és 2 cukiság, minden decemberi napra egy. Ajándéknak is tökéletes annak, aki nagyon sütit akar.</p>
+            <div class="price-tag"><b>11 990 Ft</b><span class="mono muted">átvétel a boltban</span></div>
+            <div class="cta">
+              <button class="btn btn--primary btn--lg" type="button" data-add="adventi-naptar">Kosárba teszem</button>
+              <a class="btn btn--ghost btn--lg" href="termek.html?id=adventi-naptar">Részletek</a>
+            </div>
+            <!-- TODO: rendelési határidő, készlet -->
           </div>
-          <!-- TODO: rendelési határidő, készlet -->
-        </div>
-        <div class="cal reveal d-1" aria-hidden="true">
-          <div class="cal__top"><span>Sütit akarok!</span><small>December</small></div>
-          <div class="cal__grid" id="cal-grid"></div>
+          <div class="cal reveal d-1" aria-hidden="true">
+            <div class="cal__top"><span>Sütit akarok!</span><small>December</small></div>
+            <div class="cal__grid" id="cal-grid"></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- EGYEDI TORTA -->
-    <section class="sec sec--white" aria-labelledby="custom-title">
-      <div class="wrap story">
-        <div class="reveal">
+    <!-- EGYEDI + LÁTOGATÁS -->
+    <section class="sec sec--tight" aria-labelledby="visit-title">
+      <div class="wrap duo">
+        <a class="panel duo__card reveal" href="egyedi-torta.html">
           <p class="label">Egyedi rendelés</p>
-          <h2 class="h2" id="custom-title">Tortát álmodtál? Megsütjük.</h2>
-          <p class="lead">Születésnapi torta felirattal, emeletes esküvői torta vagy teljes desszertasztal a céges karácsonyra. Mentes változatban is.</p>
-          <a class="btn btn--ink btn--lg" href="egyedi-torta.html">Ajánlatot kérek <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <h2 class="h2">Tortát álmodtál? <em class="rose">Megsütjük.</em></h2>
+          <p>Születésnapi torta felirattal, emeletes esküvői torta vagy desszertasztal a céges karácsonyra. Mentes változatban is.</p>
+          <span class="link-arrow">Ajánlatot kérek <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <img class="duo__img" src="img/termek/tejszines-csokitorta.jpg" alt="" loading="lazy" width="460" height="460">
+        </a>
+        <div class="panel duo__card reveal d-1">
+          <p class="label">Gyere be</p>
+          <h2 class="h2" id="visit-title">Frankel Leó út 72.</h2>
+          <table class="hours" id="hours" aria-label="Nyitvatartás"></table>
+          <div class="cta">
+            <a class="btn btn--primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=Budapest%2C%20Frankel%20Le%C3%B3%20%C3%BAt%2072" target="_blank" rel="noopener">Útvonaltervezés</a>
+            <a class="btn btn--ghost" href="kapcsolat.html">Kapcsolat</a>
+          </div>
         </div>
-        <div class="round-img reveal d-1" style="justify-self:center;margin-top:0"><img src="img/termek/tejszines-csokitorta.jpg" alt="Tejszínrózsás csokoládétorta felülről" loading="lazy" width="460" height="460"></div>
       </div>
-    </section>
-
-    <!-- SAJTÓ + LÁTOGATÁS -->
-    <section class="sec" aria-labelledby="visit-title">
       <div class="wrap">
         <div class="press reveal">
           <p>Írtak rólunk</p>
@@ -145,18 +145,6 @@
             <li><a href="https://hovamenjek.hu/budapest-ii-kerulet/sutit-akarok" target="_blank" rel="noopener">hovamenjek.hu</a></li>
           </ul>
         </div>
-        <div class="visit reveal" style="margin-top:96px">
-          <div class="visit__media"><img src="img/foto/vitrin-szeles.jpg" alt="A Sütit akarok! fagyispultja" loading="lazy" width="1136" height="639"></div>
-          <div class="visit__body">
-            <p class="label">Gyere be</p>
-            <h2 class="h2" id="visit-title">Frankel Leó út 72.</h2>
-            <table class="hours" id="hours" aria-label="Nyitvatartás"></table>
-            <div class="hhero__cta" style="margin-top:0">
-              <a class="btn btn--primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=Budapest%2C%20Frankel%20Le%C3%B3%20%C3%BAt%2072" target="_blank" rel="noopener">Útvonaltervezés</a>
-              <a class="btn btn--ghost" href="kapcsolat.html">Kapcsolat</a>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   </main>
@@ -164,6 +152,7 @@
   <div id="site-footer"></div>
   <script src="js/data.js"></script>
   <script src="js/core.js"></script>
+  <script src="js/cartwin.js"></script>
   <script src="js/home.js"></script>
 </body>
 </html>

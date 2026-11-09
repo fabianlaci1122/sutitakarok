@@ -24,19 +24,20 @@ Utána nyisd meg a böngészőben: http://localhost:8140
 | `egyedi-torta.html` | Egyedi torta, esküvői torta, desszertasztal, a folyamat lépései és az ajánlatkérő űrlap |
 | `rolunk.html` | Gerti és Ati története, idővonal, értékek, galéria, sajtó |
 | `kapcsolat.html` | Cím, útvonal, nyitvatartás, elérhetőségek, térkép |
-| `kosar.html` | Kosár és pénztár: tételek, átvétel vagy kiszállítás, dátum és idősáv, adatok, összesítő, visszaigazolás |
+| `kosar.html` | Csak átirányítás a régi linkekhez: a főoldalra visz, ahol a kosár ablaka magától megnyílik (`index.html#kosar`) |
 | `styles.css` | Közös stílusok. A színek (a logóból) és a betűk a `:root` változókban vannak |
 | `js/data.js` | **Termékek, árak, beállítások** (`SA.CONFIG`, `SA.CATS`, `SA.PRODUCTS`). Itt kell módosítani a kínálatot |
-| `js/core.js` | Minden oldalra: kosár (localStorage), a fejléc és a lábléc beillesztése, oldalról becsúszó mini-kosár, termékkártya, toast, beúszó animációk, küldés (CRM-webhook vagy mailto) |
-| `js/home.js`, `js/shop.js`, `js/product.js`, `js/pages.js`, `js/kosar.js` | Oldalankénti szkriptek |
+| `js/core.js` | Minden oldalra: kosár (localStorage), fejléc az oldalfülekkel és a lapozóval, lapozó kártyák az oldal alján, lábléc, termékkártya, toast, beúszó animációk, küldés (CRM-webhook vagy mailto) |
+| `js/cartwin.js` | **A kosár külön ablakban** (natív `<dialog>`): 1. Kosár → 2. Adatok → 3. Kész. Minden oldalon elérhető |
+| `js/home.js`, `js/shop.js`, `js/product.js`, `js/pages.js` | Oldalankénti szkriptek |
 | `img/termek/` | Négyzetes termékfotók |
 | `img/foto/` | Nagy fotók (hero, csempék, rólunk, kapcsolat) |
-
-A fejléc és a lábléc egy helyen, a `js/core.js` fájlban van megírva, és minden oldalra innen kerül be (`<div id="site-header">` és `<div id="site-footer">`). A menüpontokat ott kell módosítani.
 | `KUTATAS.md` | Háttérkutatás a partnerről, valamint a fotók forrásai |
 | `v1-gozgomboc-ora/` | Korábbi dizájnváltozat, archívumként megtartva |
 
-**Betűk:** Courgette (a logó feliratához legközelebb álló betű, ő/ű is van benne) és Manrope, mind a Google Fonts-ról.
+**Navigáció:** a fejléc és a lábléc egy helyen, a `js/core.js` fájlban van megírva, és minden oldalra innen kerül be (`<div id="site-header">` és `<div id="site-footer">`). Az oldalak sorrendje, vagyis a fülek, a ‹ › lapozó és az „Előző/Következő oldal” kártyák mind az `SA.PAGES` tömbből jönnek. Új oldalnál elég oda felvenni.
+
+**Betűk (Google Fonts):** Unbounded (címek), Geist (szöveg), Geist Mono (címkék, árak, adatok), Courgette (a logó felirata és a kiemelt szavak). Mindegyikben van ő és ű.
 
 ## Hogyan működik a rendelés
 

@@ -1,5 +1,6 @@
 /* Sütit akarok! – közös mag minden oldalra:
-   kosár (localStorage), fejléc/lábléc/mini-kosár beillesztése, termékkártya, toast, beúszás, küldés. */
+   kosár (localStorage), fejléc oldalfülekkel és lapozóval, lábléc, termékkártya, toast, beúszás, küldés.
+   A kosár ablakát a js/cartwin.js rajzolja. */
 (function () {
   const C = SA.CONFIG;
   const KEY = "sutitakarok_cart_v2";
@@ -101,70 +102,84 @@
     </article>`;
   };
 
-  // ======================= FEJLÉC / LÁBLÉC =======================
-  const NAV = [
-    ["webshop", "webshop.html", "Webshop"],
-    ["egyedi", "egyedi-torta.html", "Egyedi torta"],
-    ["rolunk", "rolunk.html", "Rólunk"],
-    ["kapcsolat", "kapcsolat.html", "Kapcsolat"],
+  // ======================= OLDALAK SORRENDJE (fülek + lapozó) =======================
+  SA.PAGES = [
+    { id: "home", href: "index.html", label: "Főoldal" },
+    { id: "webshop", href: "webshop.html", label: "Webshop" },
+    { id: "egyedi", href: "egyedi-torta.html", label: "Egyedi torta" },
+    { id: "rolunk", href: "rolunk.html", label: "Rólunk" },
+    { id: "kapcsolat", href: "kapcsolat.html", label: "Kapcsolat" },
   ];
-  const BAG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1.2 11.2a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8L6 8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>';
+  const ICON = {
+    bag: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1.2 11.2a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8L6 8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>',
+    prev: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>',
+    next: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>',
+  };
+  const pad2 = (n) => String(n).padStart(2, "0");
 
   function headerHTML(page) {
+    const i = Math.max(0, SA.PAGES.findIndex((p) => p.id === page));
+    const prev = SA.PAGES[(i - 1 + SA.PAGES.length) % SA.PAGES.length];
+    const next = SA.PAGES[(i + 1) % SA.PAGES.length];
     return `
-    <div class="announce" role="region" aria-label="Közlemény">
-      <div class="announce__track">
-        <span>Gőzgombóc minden nap, kb. 25 perc alatt</span><span>Ingyenes kiszállítás ${SA.ft(C.FREE_DELIVERY_FROM)} felett Budapesten</span><span>Egyedi tortát 3 nappal előre rendelj</span>
-      </div>
-    </div>
     <header class="hdr" id="hdr">
-      <div class="hdr__in">
-        <nav class="hdr__nav" id="nav" aria-label="Fő menü">
-          ${NAV.map(([id, href, label]) => `<a href="${href}"${id === page ? ' aria-current="page"' : ""}>${label}</a>`).join("")}
-        </nav>
+      <div class="hdr__bar">
         <a class="hdr__brand" href="index.html" aria-label="Sütit akarok! – kezdőlap">
-          <img src="img/logo-240.png" alt="" width="56" height="56">
+          <img src="img/logo-240.png" alt="" width="40" height="40">
           <span>Sütit akarok!</span>
         </a>
+        <nav class="tabs" id="tabs" aria-label="Oldalak">
+          ${SA.PAGES.map((p, k) => `<a href="${p.href}"${p.id === page ? ' aria-current="page"' : ""}><i>${pad2(k + 1)}</i>${p.label}</a>`).join("")}
+        </nav>
         <div class="hdr__tools">
-          <a class="hdr__link" href="tel:${C.PHONE}">${C.PHONE_LABEL}</a>
-          <a class="cartbtn" href="kosar.html" id="cartbtn" aria-label="Kosár, 0 termék">${BAG}<span class="cartbtn__label">Kosár</span><span class="cartbtn__count" data-cart-count hidden>0</span></a>
-          <button class="hdr__burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menü megnyitása"><span></span><span></span></button>
+          <div class="stepper" aria-label="Lapozás az oldalak között">
+            <a class="stepper__btn" href="${prev.href}" aria-label="Előző oldal: ${prev.label}" title="Előző: ${prev.label}">${ICON.prev}</a>
+            <span class="stepper__pos" aria-hidden="true">${pad2(i + 1)}<b>/</b>${pad2(SA.PAGES.length)}</span>
+            <a class="stepper__btn" href="${next.href}" aria-label="Következő oldal: ${next.label}" title="Következő: ${next.label}">${ICON.next}</a>
+          </div>
+          <button class="cartbtn" type="button" id="cartbtn" data-open-cart aria-haspopup="dialog" aria-label="Kosár megnyitása, 0 termék">${ICON.bag}<span class="cartbtn__label">Kosár</span><span class="cartbtn__count" data-cart-count hidden>0</span></button>
         </div>
       </div>
     </header>`;
   }
 
+  function pagerHTML(page) {
+    const i = SA.PAGES.findIndex((p) => p.id === page);
+    if (i < 0) return "";
+    const prev = SA.PAGES[i - 1], next = SA.PAGES[i + 1];
+    return `
+    <nav class="pager wrap" aria-label="Lapozás">
+      ${prev ? `<a class="pager__link" href="${prev.href}"><small>${ICON.prev}Előző oldal</small><b>${prev.label}</b></a>` : "<span></span>"}
+      ${next ? `<a class="pager__link pager__link--next" href="${next.href}"><small>Következő oldal${ICON.next}</small><b>${next.label}</b></a>` : `<a class="pager__link pager__link--next" href="${SA.PAGES[0].href}"><small>Vissza az elejére${ICON.next}</small><b>${SA.PAGES[0].label}</b></a>`}
+    </nav>`;
+  }
+
   function footerHTML() {
     return `
     <footer class="ftr">
-      <div class="wrap ftr__cta">
-        <p class="ftr__big">Sütit akarsz?</p>
-        <div class="ftr__cta-btns"><a class="btn btn--light" href="webshop.html">Irány a webshop</a><a class="btn btn--outline-light" href="${C.MAPS_URL}" target="_blank" rel="noopener">Útvonaltervezés</a></div>
-      </div>
       <div class="wrap ftr__in">
         <div class="ftr__brand">
-          <img src="img/logo-240.png" alt="" width="72" height="72">
+          <img src="img/logo-240.png" alt="" width="56" height="56">
+          <p class="ftr__name">Sütit akarok!</p>
           <p>Cukrászda és fagyizó<br>${C.ADDRESS}</p>
-          <p class="ftr__open" data-open-now></p>
+          <p class="ftr__coord">47.5211° N · 19.0367° E</p>
         </div>
+        <nav class="ftr__col" aria-label="Oldalak">
+          <p class="ftr__h">Oldalak</p>
+          ${SA.PAGES.map((p) => `<a href="${p.href}">${p.label}</a>`).join("")}
+        </nav>
         <nav class="ftr__col" aria-label="Webshop">
           <p class="ftr__h">Webshop</p>
-          <a href="webshop.html">Összes termék</a>
           <a href="webshop.html?cat=torta">Egész torták</a>
           <a href="webshop.html?cat=szelet">Sütik és dobozok</a>
           <a href="termek.html?id=adventi-naptar">Adventi naptár</a>
-        </nav>
-        <nav class="ftr__col" aria-label="Rólunk">
-          <p class="ftr__h">Sütit akarok!</p>
-          <a href="egyedi-torta.html">Egyedi torta és rendezvény</a>
-          <a href="rolunk.html">Rólunk</a>
-          <a href="kapcsolat.html">Kapcsolat és nyitvatartás</a>
+          <button type="button" class="ftr__btn" data-open-cart>Kosár</button>
           <a href="#">ÁSZF</a>
           <a href="#">Adatkezelés</a>
         </nav>
         <div class="ftr__col">
           <p class="ftr__h">Kapcsolat</p>
+          <p class="ftr__open" data-open-now></p>
           <a href="tel:${C.PHONE}">${C.PHONE_LABEL}</a>
           <a href="mailto:${C.ORDER_EMAIL}">${C.ORDER_EMAIL}</a>
           <div class="social">
@@ -181,81 +196,15 @@
     </footer>`;
   }
 
-  function drawerHTML() {
-    return `
-    <div class="scrim" id="scrim" hidden></div>
-    <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" aria-hidden="true" inert>
-      <div class="drawer__head">
-        <p id="drawer-title">Kosár <span data-cart-count-plain></span></p>
-        <button type="button" class="iconbtn" data-close-drawer aria-label="Kosár bezárása"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-      </div>
-      <div class="drawer__body" id="drawer-body"></div>
-      <div class="drawer__foot" id="drawer-foot"></div>
-    </aside>`;
-  }
-
-  // ======================= MINI-KOSÁR =======================
-  let lastFocus = null;
-  function renderDrawer() {
-    const body = $("#drawer-body"), foot = $("#drawer-foot");
-    if (!body) return;
-    const lines = SA.cart.lines();
-    document.querySelectorAll("[data-cart-count-plain]").forEach((el) => (el.textContent = lines.length ? `(${SA.cart.count()})` : ""));
-    if (!lines.length) {
-      body.innerHTML = `<div class="drawer__empty"><img src="img/logo-240.png" alt="" width="72" height="72"><p class="script">Még üres a kosarad</p><p>Pedig tudjuk, hogy sütit akarsz.</p><a class="btn btn--primary" href="webshop.html">Irány a webshop</a></div>`;
-      foot.innerHTML = "";
-      return;
-    }
-    body.innerHTML = `<ul class="mini">${lines.map((l) => `
-      <li class="mini__line">
-        ${l.p.img ? `<img src="${l.p.img}" alt="" width="72" height="72">` : SA.ph(l.p, "ph ph--sm")}
-        <div>
-          <a class="mini__name" href="termek.html?id=${l.p.id}">${esc(l.p.name)}</a>
-          <p class="mini__var">${esc(l.variant)}</p>
-          <div class="qty qty--sm" role="group" aria-label="${esc(l.p.name)} mennyiség">
-            <button type="button" data-step="${l.id}:${l.v}:-1" aria-label="Eggyel kevesebb">−</button><output>${l.qty}</output><button type="button" data-step="${l.id}:${l.v}:1" aria-label="Eggyel több">+</button>
-          </div>
-        </div>
-        <span class="mini__total">${SA.ft(l.total)}</span>
-      </li>`).join("")}</ul>`;
-    const sub = SA.cart.subtotal(), left = Math.max(0, C.FREE_DELIVERY_FROM - sub);
-    foot.innerHTML = `
-      <div class="freebar"><span>${left ? `Még <b>${SA.ft(left)}</b>, és ingyen kiszállítjuk.` : "Ingyenes kiszállítás jár a rendelésedhez."}</span><div class="freebar__track"><div class="freebar__fill" style="width:${Math.min(100, (sub / C.FREE_DELIVERY_FROM) * 100)}%"></div></div></div>
-      <div class="sumrow sumrow--total"><span>Részösszeg</span><span>${SA.ft(sub)}</span></div>
-      <a class="btn btn--primary btn--block btn--lg" href="kosar.html">Tovább a pénztárhoz</a>
-      <button class="btn btn--text btn--block" type="button" data-close-drawer>Vásárlás folytatása</button>`;
-  }
-
-  SA.openDrawer = function () {
-    const d = $("#drawer");
-    if (!d || document.body.dataset.page === "kosar") return;
-    lastFocus = document.activeElement;
-    renderDrawer();
-    $("#scrim").hidden = false;
-    d.removeAttribute("inert");
-    d.setAttribute("aria-hidden", "false");
-    requestAnimationFrame(() => { document.body.classList.add("drawer-open"); });
-    setTimeout(() => d.querySelector("[data-close-drawer]").focus(), 50);
-  };
-  SA.closeDrawer = function () {
-    const d = $("#drawer");
-    if (!d || !document.body.classList.contains("drawer-open")) return;
-    document.body.classList.remove("drawer-open");
-    d.setAttribute("aria-hidden", "true");
-    d.setAttribute("inert", "");
-    setTimeout(() => { $("#scrim").hidden = true; }, 350);
-    if (lastFocus) lastFocus.focus();
-  };
-
   // ======================= TOAST =======================
   let toastTimer;
-  SA.toast = function (html) {
+  SA.toast = function (html, action) {
     let t = $(".toast");
     if (!t) { t = document.createElement("div"); t.className = "toast"; t.setAttribute("role", "status"); t.setAttribute("aria-live", "polite"); document.body.appendChild(t); }
-    t.innerHTML = html;
+    t.innerHTML = `<span>${html}</span>${action ? `<button type="button" class="toast__btn" data-open-cart>${action}</button>` : ""}`;
     t.classList.add("is-on");
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => t.classList.remove("is-on"), 3200);
+    toastTimer = setTimeout(() => t.classList.remove("is-on"), 4200);
   };
 
   // ======================= ESEMÉNYEK =======================
@@ -263,10 +212,9 @@
     const n = SA.cart.count();
     document.querySelectorAll("[data-cart-count]").forEach((el) => { el.textContent = n; el.hidden = n === 0; });
     const b = $("#cartbtn");
-    if (b) b.setAttribute("aria-label", `Kosár, ${n} termék`);
+    if (b) b.setAttribute("aria-label", `Kosár megnyitása, ${n} termék`);
   }
-
-  document.addEventListener("cart:change", () => { renderBadge(); if (document.body.classList.contains("drawer-open")) renderDrawer(); });
+  document.addEventListener("cart:change", renderBadge);
 
   document.addEventListener("click", (e) => {
     const add = e.target.closest("[data-add]");
@@ -275,50 +223,36 @@
       const p = SA.byId(add.dataset.add);
       if (!p) return;
       const v = +(add.dataset.v || 0);
-      const qty = +(add.dataset.qty || 1);
-      SA.cart.add(p.id, v, qty);
+      SA.cart.add(p.id, v, +(add.dataset.qty || 1));
       const b = $("#cartbtn");
       if (b) { b.classList.remove("bump"); void b.offsetWidth; b.classList.add("bump"); }
-      if (document.body.dataset.page === "kosar") SA.toast(`<strong>${esc(p.name)}</strong> a kosárban.`);
-      else SA.openDrawer();
+      if (!document.body.classList.contains("win-open")) SA.toast(`<b>${esc(p.name)}</b> · ${esc(p.variants[v].label)} a kosárban`, "Kosár megnyitása");
       return;
     }
     const st = e.target.closest("[data-step]");
     if (st) { const [id, v, d] = st.dataset.step.split(":"); SA.cart.step(id, +v, +d); return; }
-    if (e.target.closest("[data-close-drawer]") || e.target.id === "scrim") { SA.closeDrawer(); return; }
-    const cb = e.target.closest("#cartbtn");
-    if (cb && document.body.dataset.page !== "kosar") { e.preventDefault(); SA.openDrawer(); }
-  });
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key !== "Escape") return;
-    SA.closeDrawer();
-    const hdr = $("#hdr");
-    if (hdr && hdr.classList.contains("is-open")) { hdr.classList.remove("is-open"); hdr.querySelector(".hdr__burger").setAttribute("aria-expanded", "false"); }
+    if (e.target.closest("[data-open-cart]")) {
+      e.preventDefault();
+      $(".toast")?.classList.remove("is-on");
+      if (SA.openCart) SA.openCart();
+    }
   });
 
   function setupHeader() {
     const hdr = $("#hdr");
     if (!hdr) return;
-    let lastY = window.scrollY;
-    const onScroll = () => {
-      const y = window.scrollY;
-      hdr.classList.toggle("is-scrolled", y > 10);
-      // lefelé görgetéskor elrejtjük, felfelé visszajön
-      hdr.classList.toggle("is-hidden", y > 320 && y > lastY && !hdr.classList.contains("is-open"));
-      lastY = y;
-    };
+    const onScroll = () => hdr.classList.toggle("is-scrolled", window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    const burger = hdr.querySelector(".hdr__burger");
-    burger.addEventListener("click", () => {
-      const open = !hdr.classList.contains("is-open");
-      hdr.classList.toggle("is-open", open);
-      burger.setAttribute("aria-expanded", String(open));
-      burger.setAttribute("aria-label", open ? "Menü bezárása" : "Menü megnyitása");
-    });
+    // mobilon az aktív fül legyen látható a vízszintesen görgethető sávban
+    const cur = hdr.querySelector('.tabs a[aria-current="page"]');
+    if (cur) {
+      const tabs = hdr.querySelector(".tabs");
+      tabs.scrollLeft = cur.offsetLeft - (tabs.clientWidth - cur.clientWidth) / 2;
+    }
   }
 
+  // ======================= BEÚSZÁS =======================
   SA.observeReveal = function (root = document) {
     const els = root.querySelectorAll(".reveal:not(.is-in), .reveal-img:not(.is-in)");
     if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) { els.forEach((el) => el.classList.add("is-in")); return; }
@@ -346,8 +280,7 @@
     const page = document.body.dataset.page || "";
     const hs = $("#site-header"), fs = $("#site-footer");
     if (hs) hs.outerHTML = headerHTML(page);
-    if (fs) fs.outerHTML = footerHTML();
-    document.body.insertAdjacentHTML("beforeend", drawerHTML());
+    if (fs) fs.outerHTML = pagerHTML(page) + footerHTML();
     document.querySelectorAll("[data-open-now]").forEach((el) => { const s = SA.openState(); el.textContent = s.text; el.classList.toggle("is-open", s.open); });
     setupHeader();
     renderBadge();
